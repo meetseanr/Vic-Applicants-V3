@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Build Applicants Victoria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,12 +172,18 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .sugg button{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:10px 14px;border:none;background:none;border-bottom:1px solid var(--border-light);cursor:pointer}
 .sugg button:last-child{border-bottom:none}
 .sugg button:hover{background:var(--card-hover)}
+.edrop-wrap{position:relative;display:inline-block}
+.edrop-menu{position:absolute;top:calc(100% + 6px);left:0;z-index:70;min-width:230px;max-height:280px;overflow-y:auto}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip-btn{font-size:11.5px;padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:20px;color:var(--ink-med);cursor:pointer}
 .chip-btn:hover{background:var(--ink);color:var(--card);border-color:var(--ink)}
 
 /* ── Badges ── */
 .badge{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;line-height:1.6}
+a.badge{color:inherit;text-decoration:none;cursor:pointer}
+a.badge:hover{filter:brightness(0.94)}
+.clink{color:inherit;text-decoration:underline;text-decoration-color:var(--ink-faint);text-underline-offset:2px;cursor:pointer}
+.clink:hover{text-decoration-color:currentColor}
 .b-ok{background:var(--positive-bg);color:var(--positive-text)}
 .b-warn{background:var(--warning-bg);color:var(--warning-text)}
 .b-bad{background:var(--negative-bg);color:var(--negative-text)}
@@ -245,12 +250,30 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .fact b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-light);font-weight:600}
 .fact span{font-size:13px;font-weight:600}
 .trig{border:1px solid var(--border-light);border-radius:10px;overflow:hidden}
-.trig-h{display:grid;grid-template-columns:auto 1fr auto;gap:10px;padding:10px 12px;align-items:center;cursor:pointer;background:none;border:none;width:100%;text-align:left}
+.trig-h{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 12px;align-items:center;cursor:pointer;background:none;border:none;width:100%;text-align:left}
 .trig-h:hover{background:var(--card-hover)}
-.trig-dot{width:8px;height:8px;border-radius:50%}
 .trig-t{font-size:12.5px;font-weight:500}
 .trig-t small{display:block;font-size:11px;color:var(--ink-light);font-weight:400}
-.trig-b{padding:0 12px 12px 30px;font-size:12px;color:var(--ink-med)}
+.trig-b{padding:0 12px 12px 12px;font-size:12px;color:var(--ink-med)}
+.see-details{white-space:nowrap;text-decoration:underline;text-decoration-color:var(--ink-faint);text-underline-offset:2px}
+.chip-need{background:var(--warning-bg);color:var(--warning-text)}
+.chip-no{background:var(--positive-bg);color:var(--positive-text)}
+.chip-gap{background:var(--neutral-bg);color:var(--ink-med)}
+.chip-stop{background:var(--negative-bg);color:var(--negative-text)}
+.path-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.path-card{border:1px solid var(--border-light);border-radius:10px;padding:12px 14px;background:var(--card)}
+.path-card.sel{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.path-card.avail:not(.sel){cursor:pointer}
+.path-card.avail:not(.sel):hover{border-color:var(--ink-med)}
+.path-card.unavail{opacity:.65}
+.path-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.path-dot{width:16px;height:16px;border-radius:50%;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.path-card.sel .path-dot{background:var(--ink);border-color:var(--ink);color:var(--card)}
+.path-t{font-size:13px;font-weight:600}
+.path-d{font-size:11.5px;color:var(--ink-med);margin-top:6px}
+.path-why{margin-top:8px;font-size:11px;color:var(--ink-light)}
+.path-why summary{cursor:pointer;font-weight:500}
+.path-why ul{margin:6px 0 0;padding-left:16px}
 .verbatim{font-family:var(--mono);font-size:11px;line-height:1.55;background:var(--sunk);border-radius:8px;padding:10px 12px;color:var(--ink-med);white-space:pre-wrap;margin-top:6px}
 .verbatim .src{display:block;color:var(--ink-light);margin-bottom:4px;font-weight:600}
 
@@ -405,7 +428,6 @@ body:not(.pro) .pro-only{display:none!important}
 .tchip.t3{background:var(--warning-bg);color:var(--warning-text)}
 @media (max-width:560px){.sc-row{grid-template-columns:1fr}}
 </style>
-</head><body>
 
 <div id="gate">
   <div class="gate-shell">
@@ -414,8 +436,8 @@ body:not(.pro) .pro-only{display:none!important}
       <div class="gate-brand">Build AU</div>
       <div class="gate-desc">Build Applicants — planning permit demonstrator<br>Victoria · Darebin City Council</div>
       <dl class="gate-facts">
-        <div><dt>Version</dt><dd>v3.3</dd></div>
-        <div><dt>Last updated</dt><dd>23 September 2026</dd></div>
+        <div><dt>Version</dt><dd>v3.15</dd></div>
+        <div><dt>Last updated</dt><dd>26 September 2026</dd></div>
         <div><dt>Scope</dt><dd>Property → lodgement (new permits)</dd></div>
       </dl>
     </aside>
@@ -456,12 +478,6 @@ body:not(.pro) .pro-only{display:none!important}
       </div>
       <span class="regime-note" id="regimeNote">P&amp;E Act 1987 + Interim Regulations 2026</span>
     </div>
-    <div class="cb-group"><span class="cb-label">Applicant</span>
-      <div class="seg" id="personaSeg">
-        <button type="button" data-p="guided" class="on">First-timer</button>
-        <button type="button" data-p="pro">Professional</button>
-      </div>
-    </div>
     <div class="cb-spacer"></div>
     <button type="button" class="cb-btn" id="diffBtn" onclick="openDiff()">What changes in 2027?</button>
     <button type="button" class="cb-btn" onclick="openKey()">Key</button>
@@ -472,6 +488,7 @@ body:not(.pro) .pro-only{display:none!important}
     <div class="greeting">
       <div class="greeting-hello" id="greetTitle">Apply for a planning permit</div>
       <div class="greeting-sub" id="greetSub">Tell us where and what. We work out which rules apply, whether you need a permit, and what council needs to see.</div>
+      <button type="button" class="btn sm ghost" id="privacyLinkTop" style="margin-top:6px;padding-left:0" onclick="openPrivacy()">How we handle your information</button>
     </div>
     <div class="layout">
       <section>
@@ -486,7 +503,7 @@ body:not(.pro) .pro-only{display:none!important}
 <div id="overlay"></div>
 <input type="file" id="fileInput" hidden onchange="onFiles(this.files)" aria-label="Upload files">
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="proto-tag">Build Applicants — Victoria planning permit prototype v3.3 — This is a concept demonstration only and does not conform to the Objective Design Language. Commercial in confidence.</div>
+<div class="proto-tag">Build Applicants — Victoria planning permit prototype v3.15 — This is a concept demonstration only and does not conform to the Objective Design Language. Commercial in confidence.</div>
 <script>
 
 // ═══════════════════════════════════════════════════════════════════
@@ -517,12 +534,18 @@ const SA = {
 //  SOURCES
 //  Property controls: Vicmap Planning (plan_zone, plan_overlay) and Vicmap
 //  Property parcel geometry, queried 23 Sep 2026. Lot areas computed from parcel polygons.
-//  Scheme text: Darebin Planning Scheme, Keystone export, current to VC295 (7 Nov 2025).
+//  Scheme text: Darebin Planning Scheme, Keystone export, current to VC315 (24 Sep 2026).
 //  Statute: P&E Act 1987 (as at 3 Aug 2026), P&E Interim Regulations 2026 (SR 40/2026),
 //  Planning Amendment (Better Decisions Made Faster) Act 2026, Part 5 (not yet in force).
 //  Title, owner and certificate data: SIMULATED.
 // ═══════════════════════════════════════════════════════════════════
-const SCHEME = {name:'Darebin Planning Scheme', version:'VC295', gazetted:'7 Nov 2025', source:'Keystone export'};
+const SCHEME = {name:'Darebin Planning Scheme', version:'VC315', gazetted:'24 Sep 2026', source:'Keystone export'};
+// Per-council setting (v3.10): the URL a clause reference opens. Deliberately the scheme's general ordinance
+// landing page, not a per-clause deep link — Keystone/PSO clause URLs aren't stable enough to maintain one
+// mapping per clause, so every reference sends the user to the scheme itself instead. In production this
+// would be one field in council configuration, set once per council, not hardcoded per reference.
+const COUNCIL_SETTINGS = { schemeName:'Darebin Planning Scheme', schemeUrl:'https://planning-schemes.app.planning.vic.gov.au/Darebin/ordinance/00' };
+function schemeLink(inner,cls){ return `<a href="${COUNCIL_SETTINGS.schemeUrl}" target="_blank" rel="noopener" class="${cls||''}" title="Open the ${esc(COUNCIL_SETTINGS.schemeName)} — links to the scheme itself, not this specific clause">${inner}</a>`; }
 
 const CONTROL_NAMES = {
   GRZ1:'General Residential Zone — Schedule 1', GRZ2:'General Residential Zone — Schedule 2',
@@ -533,7 +556,14 @@ const CONTROL_NAMES = {
   LSIO:'Land Subject to Inundation Overlay', ESO1:'Environmental Significance Overlay — Schedule 1', SLO1:'Significant Landscape Overlay — Schedule 1'
 };
 // Controls present in Vicmap today but whose Darebin schedule is NOT in the loaded scheme version.
-const NOT_IN_LOADED_SCHEME = ['HCTZ2','SLO1'];
+// SLO1 was removed from this list in v3.15: Schedule 1 to Clause 42.03 is in the loaded VC315 export
+// (confirmed directly against the scheme's XML export) — the v3.6/v3.8 reconciliation passes that flagged
+// it as missing searched ordinance TITLES for the literal string "SLO1", which never appears in any title
+// (it only appears in body text — "Shown on the planning scheme map as SLO1"). That was a search-method
+// error, not a genuine gap. HCTZ2 was re-checked with the same, corrected method (full parent/child tree
+// from Clause 32.10, plus a whole-document body-text search) and is genuinely absent — no schedule to
+// Clause 32.10 exists anywhere in this export.
+const NOT_IN_LOADED_SCHEME = ['HCTZ2'];
 
 const DEMO = [
   {id:'p1', site:'p1', addr:'105 Albert Street, Preston VIC 3072', short:'105 Albert St', zone:'GRZ2', overlays:['DCPO1'], existing:'dwelling', covenant:false,
@@ -566,28 +596,34 @@ const PROPERTIES = [
   ...NEIGHBOURS.map((n,i)=>({id:'n'+i, site:n[0], addr:n[1]+', Preston VIC 3072', short:n[1].replace(/ Street$/,' St').replace(/ Road$/,' Rd'), zone:n[4], overlays:n[5], spi:n[2].split('|'), area:n[3], existing:'dwelling', covenant:false, demo:false, hint:''})),
 ];
 
-// Verbatim scheme text used in outcome explanations (excerpts, Darebin scheme to VC295).
+// Verbatim scheme text used in outcome explanations (excerpts, Darebin scheme to VC315).
 const CL = {
- '32.08-5':{t:'GRZ — Construction and extension of one dwelling on a lot', a:'VC282', x:'A permit is required to construct or extend one dwelling on a lot less than 300 square metres.\nNo permit is required to: … Construct or extend an out-building (other than a garage or carport) on a lot provided the gross floor area of the out-building does not exceed 10 square metres and the maximum building height is not more than 3 metres above ground level.'},
- '32.09-5':{t:'NRZ — Construction and extension of one dwelling on a lot', a:'VC282', x:'A permit is required to construct or extend one dwelling on a lot less than 300 square metres.'},
+ '32.08-5':{t:'GRZ — Construction and extension of one dwelling on a lot', a:'VC315', x:'A permit is required to construct or extend one dwelling on a lot less than 300 square metres.\nNo permit is required to: … Construct or extend an out-building (other than a garage or carport) on a lot provided the gross floor area of the out-building does not exceed 10 square metres and the maximum building height is not more than 3 metres above ground level.'},
+ '32.09-5':{t:'NRZ — Construction and extension of one dwelling on a lot', a:'VC315', x:'A permit is required to construct or extend one dwelling on a lot less than 300 square metres.'},
  '32.08-5F':{t:'GRZ 32.08-5 — Front fence (one dwelling)', a:'VC282', x:'A permit is required to construct or extend a front fence within 3 metres of a street if the fence is associated with one dwelling on a lot less than 300 square metres and the fence exceeds the maximum height specified in clause 54.02-7.\nVicSmart: Construct or extend a front fence within 3 metres of a street if the fence is associated with one dwelling on a lot less than 300 square metres → Clause 59.03'},
  '32.09-5F':{t:'NRZ 32.09-5 — Front fence (one dwelling)', a:'VC282', x:'A permit is required to construct or extend a front fence within 3 metres of a street if the fence is associated with one dwelling on a lot less than 300 square metres and the fence exceeds the maximum height specified in clause 54.02-7.\nVicSmart: … → Clause 59.03'},
  '32.08-7F':{t:'GRZ 32.08-7 — Front fence (two or more dwellings)', a:'VC282', x:'A permit is required to construct or extend a front fence within 3 metres of a street if: The fence is associated with two or more dwellings on a lot or a residential building, and The fence exceeds the maximum height specified in clause 55.02-8.\nVicSmart: … → Clause 59.03'},
  '32.09-7F':{t:'NRZ 32.09-7 — Front fence (two or more dwellings)', a:'VC282', x:'A permit is required to construct or extend a front fence within 3 metres of a street if: The fence is associated with two or more dwellings on a lot or a residential building, and The fence exceeds the maximum height specified in clause 55.02-8.'},
  '59.03':{t:'Clause 59.03 — Front fence in a residential zone (VicSmart)', a:'VC148', x:'Information requirements: title and any registered restrictive covenant; a scaled, dimensioned plan showing the site, the location, length, height and design of the proposed fence and its materials, and existing front fences on adjoining and nearby properties; a photograph of the site and nearby properties along the street frontage; the reason for the proposed height.'},
- 'A2-7':{t:'Standard A2-7 / B2-8 — Maximum front fence height', a:'VC282', x:'A front fence within 3 metres of a street is: The maximum height specified in a schedule to the zone, or If no maximum height is specified in a schedule to the zone, the maximum height specified in Table A2-7. Streets in a Transport Zone 2 — 2 metres. Other streets — 1.5 metres.\nDarebin GRZ1, GRZ2 and NRZ1 schedules: Front fence height — None specified.'},
+ 'A2-7':{t:'Standard A2-7 / B2-8 — Maximum front fence height (Clause 54.02-7 / 55.02-8)', a:'VC315', x:'A front fence within 3 metres of a street is: The maximum height specified in a schedule to the zone, or If no maximum height is specified in a schedule to the zone, the maximum height specified in Table A2-7 / B2-8. Streets in a Transport Zone 2 — 2 metres. Other streets — 1.5 metres. This standard does not apply to a small second dwelling.\nDarebin GRZ1, GRZ2 and NRZ1 schedules: Front fence height — None specified.'},
+ '52.37-2':{t:'Clause 52.37-2 — Canopy trees, permit requirement', a:'VC315', x:'A permit is required to remove, destroy or lop an existing canopy tree (at least 5 m tall, with an average canopy diameter of at least 4 m) in the Mixed Use, Township, Residential Growth, General Residential, Neighbourhood Residential, and Housing Choice and Transport Zones.\nThis does not apply: if the table of exemptions in 52.37-8 says a permit is not required (e.g. a dead tree, or minor maintenance pruning of under a third of the foliage); to a canopy tree already being assessed in an application under Clause 54, 55, 57 or 58, until that permit is decided; or to an existing canopy tree — other than a “boundary canopy tree” within 6 m of the street frontage or 4.5 m of the rear boundary — on a site that already has a dwelling on it.\nVicSmart: an application under this clause is a class of VicSmart application (Clause 71.06), assessed against Clause 52.37 itself (excluding 52.37-4 and 52.37-5).'},
  '43.01-1F':{t:'Heritage Overlay 43.01-1 — Fences', a:'VC282', x:'A permit is required to … Construct a building or construct or carry out works, including: … A fence, if the fence is visible from a street (other than a lane) or public park.\nVicSmart: Construct a fence → Clause 59.07. Exempt from notice and review: Construction of a fence.\nDarebin schedule, HO168 and HO170: Outbuildings or fences not exempt — No.'},
  'DDO17-F':{t:'DDO17 — 2.0 Buildings and works', a:'C185dare', x:'A permit is required to construct a front fence that is above 1.2 metres above natural ground level.\n43.02 VicSmart: Construct a fence → Clause 59.05'},
  'LSIO-F':{t:'Schedule to 44.04 — 3.0 Permit requirement', a:'C185dare', x:'A permit is not required for the following buildings and works … A fence that is at least 90% permeable for the first 300mm above the flood level.'},
  '42.01-2F':{t:'ESO 42.01-2 — Fences', a:'VC288', x:'A permit is required to: … Construct a fence if specified in a schedule to this overlay. (ESO1 does not specify fences.)'},
  '62.02-2':{t:'Clause 62.02-2 — Buildings and works not requiring a permit unless specifically required', a:'VC253', x:'Any requirement in this scheme relating to the construction of a building or the construction or carrying out of works, other than a requirement in the Public Conservation and Resource Zone, does not apply to: A fence. …'},
- 'VS-54':{t:'Zone VicSmart class — one dwelling on a lot under 300 m²', a:'VC282', x:'Subject to Clause 71.06, an application under this clause for a development specified in Column 1 is a class of VicSmart application …\nConstruct or extend a dwelling on a lot less than 300 square metres if the development meets the following standards of Clause 54: 54.02-1 Street setback, 54.02-2 Building height, 54.02-3 Side and rear setbacks, 54.02-4 Walls on boundaries, 54.02-5 Site coverage, 54.02-6 Tree canopy, 54.02-7 Front fences, 54.04-1 Daylight to existing windows, 54.04-2 Existing north-facing windows, 54.04-3 Overshadowing secluded open space, 54.04-4 Overlooking, 54.05-2 Overshadowing domestic solar energy systems.'},
+ 'VS-54':{t:'Zone VicSmart class — one dwelling on a lot under 300 m²', a:'VC315', x:'Subject to Clause 71.06, an application under this clause for a development specified in Column 1 is a class of VicSmart application …\nConstruct or extend a dwelling on a lot less than 300 square metres if the development meets the following standards of Clause 54: 54.02-1 Street setback, 54.02-2 Building height, 54.02-3 Side and rear setbacks, 54.02-4 Walls on boundaries, 54.02-5 Site coverage, 54.02-6 Tree canopy, 54.02-7 Front fences, 54.04-1 Daylight to existing windows, 54.04-2 Existing north-facing windows, 54.04-3 Overshadowing secluded open space, 54.04-4 Overlooking, 54.05-2 Overshadowing domestic solar energy systems.'},
+ '32.08-6':{t:'GRZ 32.08-6 — Construction and extension of a small second dwelling on a lot', a:'VC315', x:'A permit is required to construct or extend a small second dwelling on a lot of less than 300 square metres. A development must meet the requirements of Clause 54.\nVicSmart standards for a small second dwelling differ from a first dwelling: 54.02-1, 54.02-2, 54.02-3, 54.02-4, 54.02-5, 54.02-6 Tree canopy, 54.02-8 Building setback for small second dwellings, 54.03-5 Safety and accessibility, 54.04-1, 54.04-2, 54.04-3, 54.04-4, 54.05-2 — not 54.02-7 Front fences, which this standard does not apply to.'},
+ '32.09-6':{t:'NRZ 32.09-6 — Construction and extension of a small second dwelling on a lot', a:'VC315', x:'A permit is required to construct or extend a small second dwelling on a lot of less than 300 square metres. A development must meet the requirements of Clause 54.\nVicSmart standards for a small second dwelling differ from a first dwelling: 54.02-1, 54.02-2, 54.02-3, 54.02-4, 54.02-5, 54.02-6 Tree canopy, 54.02-8 Building setback for small second dwellings, 54.03-5 Safety and accessibility, 54.04-1, 54.04-2, 54.04-3, 54.04-4, 54.05-2 — not 54.02-7 Front fences, which this standard does not apply to.'},
  '32.08-6':{t:'GRZ — Construction and extension of a small second dwelling', a:'VC282', x:'A permit is required to construct or extend a small second dwelling on a lot of less than 300 square metres.'},
- '32.08-7':{t:'GRZ — Two or more dwellings on a lot', a:'VC288', x:'A permit is required to: Construct a dwelling if there is at least one dwelling existing on the lot. Construct two or more dwellings on a lot. …\nA development must meet the requirements of Clause 55. This does not apply to a development of four or more storeys … A development of four storeys … must meet the requirements of Clause 57. An apartment development of five or more storeys … must meet the requirements of Clause 58.'},
+ '32.08-7':{t:'GRZ 32.08-7 — Two or more dwellings on a lot', a:'VC315', x:'A permit is required to: Construct a dwelling if there is at least one dwelling existing on the lot. Construct two or more dwellings on a lot. Extend a dwelling if there are two or more dwellings on the lot. Construct or extend a dwelling on common property. Construct or extend a residential building.\nA development of three storeys or less, excluding a basement, must meet the requirements of Clause 55. An apartment development of seven storeys or more, excluding a basement, must meet the requirements of Clause 58. (A development of four to six storeys meets Clause 57, by that clause’s own title — not spelt out again here.)'},
+ '32.09-7':{t:'NRZ 32.09-7 — Two or more dwellings on a lot', a:'VC315', x:'A permit is required to: Construct a dwelling if there is at least one dwelling existing on the lot. Construct two or more dwellings on a lot. Extend a dwelling if there are two or more dwellings on the lot. Construct or extend a dwelling on common property. Construct or extend a residential building.\nA development of three storeys or less, excluding a basement, must meet the requirements of Clause 55. An apartment development of seven storeys or more, excluding a basement, must meet the requirements of Clause 58.'},
  'VS-55':{t:'Zone VicSmart class — one or two dwellings on a lot', a:'VC288', x:'Construct one dwelling if there is no more than one dwelling existing on a lot, extend a dwelling if there are two dwellings on a lot, or construct two dwellings on a lot, if the development meets the following standards of clause 55: 55.02-1 Street setback, 55.02-2 Building height, 55.02-3 Side and rear setbacks, 55.02-4 Walls on boundaries, 55.02-5 Site coverage, 55.02-6 Access, 55.02-7 Tree canopy, 55.02-8 Front fences, 55.04-1 to 55.04-4, 55.05-2 …'},
- '32.08-13':{t:'Exemption from notice and review', a:'VC282', x:'An application under clause 32.08-7 is exempt from the decision requirements of section 64(1), (2) and (3) and the review rights of section 82(1) of the Act if all the applicable standards under clause 55.02, 55.04-1, 55.04-2, 55.04-3, 55.04-4 and 55.05-2 are met.'},
+ '32.08-13':{t:'Exemption from notice and review', a:'VC308', x:'An application under clause 32.08-7 for a development of three storeys or less, excluding a basement, is exempt from the decision requirements of section 64(1), (2) and (3) and the review rights of section 82(1) of the Act if all the applicable standards under clauses 55.02, 55.04-1, 55.04-2, 55.04-3, 55.04-4 and 55.05-2 are met. (A development of four storeys or more does not get this exemption, whatever the standards.)'},
  '32.08-2':{t:'GRZ — Table of uses', a:'VC288', x:'Section 1 — Permit not required · Section 2 — Permit required · Section 3 — Prohibited'},
  '32.09-2':{t:'NRZ — Table of uses', a:'VC288', x:'Section 1 — Permit not required · Section 2 — Permit required · Section 3 — Prohibited'},
+ '32.08-10':{t:'GRZ 32.08-10 — Buildings and works associated with a Section 2 use', a:'VC307', x:'A permit is required to construct a building or construct or carry out works for a use in Section 2 of Clause 32.08-2.\nVicSmart: where the building or works are not associated with a dwelling, primary school or secondary school and cost up to $150,000 (or up to $700,000 if associated with a primary or secondary school), and meet the relevant Clause 54 standards where the land adjoins a residential zone used for residential purposes, this is a VicSmart class assessed against Clause 59.04.'},
+ '32.09-10':{t:'NRZ 32.09-10 — Buildings and works associated with a Section 2 use', a:'VC307', x:'A permit is required to construct a building or construct or carry out works for a use in Section 2 of Clause 32.09-2.\nVicSmart: where the building or works are not associated with a dwelling, primary school or secondary school and cost up to $150,000 (or up to $700,000 if associated with a primary or secondary school), and meet the relevant Clause 54 standards where the land adjoins a residential zone used for residential purposes, this is a VicSmart class assessed against Clause 59.04.'},
  '34.01-1':{t:'C1Z — Table of uses', a:'VC288', x:'Section 1 — Permit not required: … Retail premises (other than Shop) … Shop (other than Adult sex product shop) — The leasable floor area for all shops must not exceed any amount specified in the schedule to this zone. (Darebin schedule: None specified.)'},
  '34.01-4':{t:'C1Z — Buildings and works', a:'VC148', x:'A permit is required to construct a building or construct or carry out works.\nThis does not apply to: … An alteration to an existing building façade provided: The alteration does not include the installation of an external roller shutter. At least 80 per cent of the building facade at ground floor level is maintained as an entry or window with clear glazing.\nVicSmart: Construct a building or construct or carry out works with an estimated cost of up to $500,000 where the land is not: Within 30 metres of land (not a road) which is in a residential zone … → Clause 59.04'},
  '34.01-7':{t:'C1Z — Exemption from notice and review', a:'VC148', x:'An application to … construct a building or construct or carry out works is exempt from the notice requirements of section 52(1)(a), (b) and (d) … This exemption does not apply to land within 30 metres of land (not a road) which is in a residential zone …'},
@@ -609,30 +645,34 @@ const CL = {
  '71.06-2':{t:'VicSmart process — information requirements', a:'VC288', x:'A VicSmart application must be accompanied by the information requirements specified for the relevant class of application. The information requirements of the relevant zone, overlay or particular provision, other than those specified for VicSmart applications, do not apply unless the information requirements for the relevant class of application specify otherwise.'},
 };
 
-// ── Land use terms and zone tables (Darebin scheme, to VC295) ──
+// ── Land use terms and zone tables (Darebin scheme, to VC315) ──
 // s: section (1 no permit, 2 permit, 3 prohibited); c: conditions to meet; f: section if a condition fails.
+// PPARS code: best-effort mapping to the DTP "Planning permit reporting data dictionary" (legacy 7.9
+// schema, the only version reachable — the org's egress policy blocked the newer XLSX, and Nadine's own
+// copy may differ). Not verified against her file — treat as a starting point, not a sign-off.
+const PPARS = {1:'Agriculture',2:'Food and drink premises',3:'Industry and warehouse',4:'Leisure & recreation',5:'Office',6:'Place of assembly',7:'Residential / Accommodation',8:'Retail Premises',9:'Vacant',10:'Other land use',11:'Child Care',12:'Education Centre',13:'Mineral Extraction',14:'Pleasure Boat Facility',15:'Transport Terminal',16:'Utility Installation',17:'Mixed Use',18:'Energy generation facility'}; // 18 is Sean's own addition — not in the DTP legacy 7.9 schema
 const USES = {
-  dwelling:{label:'Dwelling (a home)', nest:'Accommodation'},
-  rooming:{label:'Rooming house', nest:'Accommodation'},
-  racf:{label:'Residential aged care facility', nest:'Accommodation'},
-  bnb:{label:'Bed and breakfast', nest:'Dwelling'},
-  hbb:{label:'Home based business', nest:'—'},
-  food:{label:'Café, restaurant or bar (Food and drink premises)', nest:'Retail premises'},
-  takeaway:{label:'Take away food premises', nest:'Retail premises'},
-  convrest:{label:'Convenience restaurant', nest:'Retail premises'},
-  shop:{label:'Shop', nest:'Retail premises'},
-  convshop:{label:'Convenience shop', nest:'Retail premises'},
-  market:{label:'Market', nest:'Retail premises'},
-  nursery:{label:'Plant nursery', nest:'Retail premises'},
-  office:{label:'Office', nest:'Office'},
-  medical:{label:'Medical centre (e.g. GP, dentist)', nest:'Office'},
-  childcare:{label:'Child care centre', nest:'Education centre'},
-  gym:{label:'Gym or indoor recreation (Leisure and recreation facility)', nest:'Leisure and recreation'},
-  worship:{label:'Place of worship', nest:'Place of assembly'},
-  carwash:{label:'Car wash', nest:'Motor vehicle, boat or caravan sales / service'},
-  industry:{label:'Industry (e.g. manufacturing, workshop)', nest:'Industry'},
-  warehouse:{label:'Warehouse', nest:'Warehouse'},
-  nightclub:{label:'Nightclub', nest:'Place of assembly'},
+  dwelling:{label:'Dwelling (a home)', nest:'Accommodation', ppars:7},
+  rooming:{label:'Rooming house', nest:'Accommodation', ppars:7},
+  racf:{label:'Residential aged care facility', nest:'Accommodation', ppars:7},
+  bnb:{label:'Bed and breakfast', nest:'Dwelling', ppars:7},
+  hbb:{label:'Home based business', nest:'—', ppars:10},
+  food:{label:'Café, restaurant or bar (Food and drink premises)', nest:'Retail premises', ppars:2},
+  takeaway:{label:'Take away food premises', nest:'Retail premises', ppars:2},
+  convrest:{label:'Convenience restaurant', nest:'Retail premises', ppars:2},
+  shop:{label:'Shop', nest:'Retail premises', ppars:8},
+  convshop:{label:'Convenience shop', nest:'Retail premises', ppars:8},
+  market:{label:'Market', nest:'Retail premises', ppars:8},
+  nursery:{label:'Plant nursery', nest:'Retail premises', ppars:8},
+  office:{label:'Office', nest:'Office', ppars:5},
+  medical:{label:'Medical centre (e.g. GP, dentist)', nest:'Office', ppars:5},
+  childcare:{label:'Child care centre', nest:'Education centre', ppars:11},
+  gym:{label:'Gym or indoor recreation (Leisure and recreation facility)', nest:'Leisure and recreation', ppars:4},
+  worship:{label:'Place of worship', nest:'Place of assembly', ppars:6},
+  carwash:{label:'Car wash', nest:'Motor vehicle, boat or caravan sales / service', ppars:3},
+  industry:{label:'Industry (e.g. manufacturing, workshop)', nest:'Industry', ppars:3},
+  warehouse:{label:'Warehouse', nest:'Warehouse', ppars:3},
+  nightclub:{label:'Nightclub', nest:'Place of assembly', ppars:6},
 };
 const TRZ_COND='The site adjoins, or has access to, a road in a Transport Zone 2 or a Transport Zone 3.';
 const RES_TABLE = {
@@ -684,7 +724,7 @@ const REQS = {
   C55_site:{t:'Neighbourhood and site description', d:'As Clause 55.01-1 describes — surrounding built form, site shape and levels, neighbours’ windows and open space within 9 m, significant trees.', cl:'55.01-1', w:true},
   C55_design:{t:'Design response', d:'How the design derives from and responds to the site description.', cl:'55.01-2', w:true},
   C55_stmt:{t:'Statement of Clause 55 standards met and not met', d:'For any standard not met, how the development meets the objective having regard to the decision guidelines.', cl:'55.01', w:false},
-  C57_site:{t:'Site description and design response (four storeys)', d:'As required in Clause 57.', cl:'57.01', w:true},
+  C57_site:{t:'Site description and design response (four to six storeys)', d:'As required in Clause 57.', cl:'57.01', w:true},
   C58_ucr:{t:'Urban context report and design response', d:'For an apartment development of five or more storeys, as required in Clause 58.01.', cl:'58.01', w:true},
   C34_use:{t:'Description of the use', d:'The purpose of the use and types of activities; likely effects on adjoining land (noise, traffic, delivery and operating hours, light spill, solar access, glare); means of maintaining land not required for immediate use.', cl:'34.01-6', w:false},
   C34_bw:{t:'Plans, elevations and landscape layout', d:'A scaled plan (boundaries, adjoining roads, buildings on adjoining land, ground levels, layout, driveways, parking, loading, landscape, storage and waste areas); elevations showing colours and materials; drainage and driveway details; landscape layout.', cl:'34.01-6', w:false,
@@ -696,6 +736,11 @@ const REQS = {
   DDO17_acoustic:{t:'Acoustic assessment', d:'Required “as appropriate”.', cl:'DDO17 · 5.0', w:true},
   DDO17_waste:{t:'Waste management plan', d:'Required “as appropriate”.', cl:'DDO17 · 5.0', w:true},
   CP_cpda:{t:'Car Parking Demand Assessment', d:'Multi-purpose trips, demand over time, short- and long-stay demand, public transport, walking and cycling access, bicycle parking, car ownership rates, empirical evidence.', cl:'52.06-7', w:false},
+  CT_plan:{t:'Site plan or photographs of the canopy tree(s)', d:'Location of all canopy trees and other vegetation on the site; species, height and canopy diameter of any tree proposed to be removed, destroyed or lopped.', cl:'52.37-6', w:true},
+  CT_why:{t:'Why the canopy tree is being removed', d:'And, if the proposal doesn’t meet the canopy cover requirement, why not. Include an assessment by a suitably qualified person if the tree is removed for health or stability reasons.', cl:'52.37-6', w:true},
+  SLO1_survey:{t:'Site survey plan and site context plan', d:'Certified by a qualified surveyor, clearly showing the distance of all buildings and works from the top of bank of the waterway; plus building and fence heights to Australian Height Datum, cut and fill volumes, site coverage and permeability, and existing topography and vegetation.', cl:'Sch 1 · 42.03 · 4.0', w:true},
+  SLO1_landscape:{t:'Landscape plan and visual impact assessment', d:'Species, location, quantity and height of proposed plants and any tree protection zones; a maintenance, weed and erosion control plan for revegetated areas near the bank; and an assessment of visual impact from public viewing points along the waterway.', cl:'Sch 1 · 42.03 · 4.0', w:true},
+  SLO1_veg:{t:'Vegetation assessment and site plan', d:'An assessment and justification of the proposed removal against the schedule’s landscape character objectives, prepared by a suitably qualified person, plus a site plan showing the position, height, trunk circumference, branch spread and species of vegetation to be removed and any replacement planting.', cl:'Sch 1 · 42.03 · 4.0', w:true},
   // VicSmart class information requirements
   VS_title:{t:'Copy of title and any registered restrictive covenant', d:'Required by every VicSmart class (it is not required by the Act for an ordinary application unless the land is burdened by a covenant).', cl:'59.0x-1', w:true, auto:true},
   VS03_plan:{t:'Scaled plan of the fence', d:'Location, shape and size of the site; location, length, height and design of the proposed fence, including materials.', cl:'59.03-1', w:true},
@@ -750,7 +795,7 @@ const MPL = {threshold:1311000, thresholdYear:'2025–26', rate:0.0013, validity
 
 // ── Regimes ──
 const REGIMES = {
-  today:{label:'Today', note:'P&E Act 1987 (as at 3 Aug 2026) + Interim Regulations 2026 · Darebin scheme to VC295'},
+  today:{label:'Today', note:'P&E Act 1987 (as at 3 Aug 2026) + Interim Regulations 2026 · Darebin scheme to VC315'},
   r2027:{label:'From 29 Oct 2027', note:'Better Decisions Made Faster Act 2026, Part 5 — commences on proclamation, or automatically on 29 Oct 2027'},
 };
 const ASSUMPTIONS = [
@@ -801,6 +846,15 @@ function spatialOne(x){
     const rd=g.R.map(([n,lines])=>({n,d:Math.min(...lines.map(l=>{ const pts=toPts(l); let m=Infinity; for(const r of rings) for(const p of r) for(let i=0;i<pts.length-1;i++) m=Math.min(m,segD(p,pts[i],pts[i+1])); return m; }))})).filter(v=>v.n!=='Unnamed').sort((a,b)=>a.d-b.d)[0];
     res.trz.road = rd?rd.n:null;
   }
+  // Waterway proxy for "top of bank" (Schedule 1 to Clause 42.03 / SLO1): nearest mapped creek or trail line.
+  // This is the mapped trail alignment, not a certified top-of-bank survey — Schedule 1's own application
+  // requirements call for a surveyor-certified site plan; this is only an estimate to guide the applicant.
+  const creekLine = g.R.find(([n])=>/creek|trail/i.test(n));
+  if(creekLine){
+    const [cname, clines] = creekLine;
+    const cd = Math.min(...clines.map(l=>{ const pts=toPts(l); let m=Infinity; for(const r of rings) for(const p of r) for(let i=0;i<pts.length-1;i++) m=Math.min(m,segD(p,pts[i],pts[i+1])); return m; }));
+    res.creek = {name:cname, d:cd};
+  }
   _spCache[x.id]=res; return res;
 }
 // Spatial facts for all the land in the application: each address is measured on its own, then the nearest result wins
@@ -808,7 +862,17 @@ function spatial(p){
   if(!p) return null;
   const all=(p.parts||[p]).map(spatialOne);
   const best=(k)=>all.map(r=>r[k]).filter(Boolean).sort((a,b)=>a.d-b.d)[0]||null;
-  return {found:all.some(r=>r.found), trz:best('trz'), res:best('res')};
+  return {found:all.some(r=>r.found), trz:best('trz'), res:best('res'), creek:best('creek')};
+}
+// SLO1: distance from the top of bank (proxy), and the exemption's zone test.
+function sloBank(p){ const s=spatial(p); if(!s||!s.creek) return null; return s.creek.d>50; }
+function sloBankText(p){ const s=spatial(p); if(!s||!s.creek) return 'No mapped waterway line near this land to estimate a distance from — council to confirm the distance from the top of bank.'; return `${s.creek.d.toFixed(0)} m from the mapped ${s.creek.name} alignment (a proxy for “top of bank”, not a certified survey — Schedule 1 requires a surveyor-certified site plan with the application either way).`; }
+function sloOtherZoneTest(p){ return !/^(HCTZ|ACZ|PZ)/.test(p.zone||'') && !has(p,'BFO'); }
+function sloWhy(otherZone, sizeKnown){
+  if(!otherZone) return 'Schedule 1 to Clause 42.03 exempts a permit in the Housing Choice and Transport, Activity Centre and Precinct Zones, and on Built Form Overlay land, only if the building uses muted, natural, low-reflective colours and materials, changes ground level by 600 mm or less, and is sited more than 50 m from the top of bank of the waterway.';
+  return sizeKnown
+    ? 'Schedule 1 to Clause 42.03 only exempts a permit here if every condition is met: muted, natural, low-reflective colours and materials; no more than 600 mm change in ground level; under 6 m in height; 50 m² or less of additional floor area; and more than 50 m from the top of bank of the waterway.'
+    : 'Schedule 1 to Clause 42.03 only exempts small buildings and works outside those zones — under 6 m high and 50 m² or less of additional floor area. A new dwelling won’t meet that size and height test, so a permit is needed regardless of colours, ground level or distance from the waterway.';
 }
 function trzAdjoins(p){ const s=spatial(p); return !!(s && s.trz && s.trz.d<=1.5); }
 function within30Res(p){ const s=spatial(p); return !!(s && s.res && s.res.d<=30); }
@@ -859,14 +923,15 @@ const STEPS = [
 ];
 function freshState(){
   return {
-    regime:'today', persona:'guided', step:0, query:'', propIds:[], searchMode:'address', addQuery:'', existing:null,
+    regime:'today', persona:'guided', step:0, query:'', propIds:[], searchMode:'address', addQuery:'', existing:null, existingMoreOpen:false,
     useChoice:null, useOther:'', bw:null, devOther:'', mapLayers:{zones:true,overlays:true},
+    useChangeAns:null, bwAns:null, proposalMode:'doc', proposalScanning:false, proposalExtract:null, proposalDocName:null,
     aspects:{}, f:{}, useCond:{},
-    covenantBreach:null, covenantVary:false,
+    covAnswer:null, covenantBreach:null, covenantVary:false, titleScanned:false, titleScanning:false, titleDocName:null,
     cost:'', mplCert:null,
-    applicant:{name:'',address:'',phone:'',email:''}, isOwner:null, owner:{name:'',address:''}, ownerMode:null,
+    applicant:{name:'',address:'',phone:'',email:''}, isOwner:null, owner:{name:'',address:''}, ownerMode:null, ownerConsent:null, ownerScanning:false,
     proposalEdited:false, proposalText:'',
-    docs:{}, scanning:false, toArea:false, typeConfirmed:false,
+    docs:{}, scanning:false, toArea:false, typeConfirmed:false, pathwayChoice:null, outcomeMoreOpen:false,
     incompleteAck:false, declaration:false, submitted:false, ref:null, openTrig:{}, signedIn:false,
   };
 }
@@ -923,33 +988,59 @@ const USE_OPTS = [
 function followUps(k){
   const p=prop(); const q=[];
   const yn=(id,label,help,unsure=true)=>q.push({id,label,help,type:'yn',unsure});
+  const sloBankQ=()=>({id:'slo_bank',type:'spatial',label:'More than 50 m from the top of bank of the waterway?',value:sloBank(p),detail:sloBankText(p)});
   if(k==='ext'){
     if(has(p,'LSIO')) yn('ext_ground','Will the extension add floor area at ground level?','Upper-storey-only extensions are exempt under the flood overlay schedule.');
-    if(has(p,'ESO')) yn('h6','Will any new building be more than 6 metres above ground level?','');
+    if(has(p,'ESO')||has(p,'SLO')) yn('h6','Will any new building be more than 6 metres above ground level?','');
     if(zoneKind(p.zone)==='res' && p.area<300) yn('ext_std','Does the design meet every listed Clause 54 standard (setbacks, height, site coverage, overlooking, overshadowing…)?','If yes, the application can be VicSmart. Your designer can confirm this.');
+    if(has(p,'SLO')){
+      yn('slo_impact','Will the building use muted, natural, low-reflective colours and materials, with no more than 600 mm change in ground level?','Schedule 1 to Clause 42.03 (Significant Landscape Overlay) only exempts a permit if this and the other listed conditions are met.');
+      yn('slo_gfa50','Will the extension add 50 m² or less of additional floor area?','');
+      q.push(sloBankQ());
+    }
   }
   if(k==='out'){
     q.push({id:'out_type',label:'What are you building?',type:'pick',opts:[['carport','Carport'],['garage','Garage'],['deck','Deck'],['pergola','Pergola or verandah'],['shed','Shed']]});
     if(zoneKind(p.zone)==='res' && p.area<300) yn('out_small','Is it no bigger than 10 m² and no higher than 3 m?','');
     if(has(p,'LSIO')) yn('out_walls','Will it have walls or enclosed foundations?','Open structures without walls are exempt under the flood overlay schedule.');
     if(zoneKind(p.zone)==='res' && p.area<300) yn('ext_std','Does the design meet every listed Clause 54 standard?','');
+    if(has(p,'SLO')){
+      yn('h6','Will the new building be more than 6 metres above ground level?','');
+      yn('slo_impact','Will it use muted, natural, low-reflective colours and materials, with no more than 600 mm change in ground level?','Schedule 1 to Clause 42.03 (Significant Landscape Overlay) only exempts a permit if this and the other listed conditions are met.');
+      yn('slo_gfa50','Will it add 50 m² or less of additional floor area?','');
+      q.push(sloBankQ());
+    }
   }
   if(k==='newd'){
-    if(has(p,'ESO')) yn('h6','Will any new building be more than 6 metres above ground level?','');
+    if(has(p,'ESO')||has(p,'SLO')) yn('h6','Will any new building be more than 6 metres above ground level?','');
     if(zoneKind(p.zone)==='res' && p.area<300 && S.existing!=='dwelling') yn('ext_std','Does the design meet every listed Clause 54 standard?','');
-    if(zoneKind(p.zone)==='res' && S.existing==='dwelling' && !S.aspects.demo) yn('newd_std','Does the design meet every listed Clause 55 standard?','Because a house already exists, a new house is a second dwelling on the lot.');
+    if(zoneKind(p.zone)==='res' && S.existing==='dwelling' && !S.aspects.demo) yn('newd_std', S.persona==='pro' ? 'Does the design meet every listed Clause 55 standard?' : 'Does your design tick every box in the state’s standard design rules for this kind of development — things like setbacks, private open space, overlooking and overshadowing neighbours, and parking?', 'Because a house already exists, a new house is a second dwelling on the lot. If you’re not sure, we’ll flag it for council to confirm rather than guess.');
+    if(has(p,'SLO')){
+      yn('slo_impact','Will the building use muted, natural, low-reflective colours and materials, with no more than 600 mm change in ground level?','A new dwelling won’t meet Schedule 1’s size and height exemption test outside the Housing Choice and Transport, Activity Centre and Precinct Zones, so a permit is needed there regardless — this only matters in those zones.');
+      q.push(sloBankQ());
+    }
   }
   if(k==='ssd'){
     yn('ssd_one','Is there only one dwelling on the lot now, and will this be the only small second dwelling?','');
     yn('ssd_gas','Will the small second dwelling be connected to reticulated natural gas?','');
     if(has(p,'HO')||has(p,'DDO')) yn('ssd_h5','Will it be no higher than 5 metres and finished in muted tones and colours?','');
     if(zoneKind(p.zone)==='res' && p.area<300) yn('ext_std','Does the design meet every listed Clause 54 standard?','');
+    if(has(p,'SLO')){
+      yn('h6','Will it be more than 6 metres above ground level?','');
+      yn('slo_impact','Will it use muted, natural, low-reflective colours and materials, with no more than 600 mm change in ground level?','Schedule 1 to Clause 42.03 (Significant Landscape Overlay) only exempts a permit if this and the other listed conditions are met.');
+      yn('slo_gfa50','Will it be 50 m² or less of floor area?','');
+      q.push(sloBankQ());
+    }
   }
   if(k==='multi'){
     q.push({id:'multi_n',label:'How many dwellings will there be on the lot in total?',type:'pick',opts:[['2','Two'],['3','Three or more']]});
-    q.push({id:'multi_st',label:'How many storeys (excluding basement)?',type:'pick',opts:[['3','Up to 3'],['4','4'],['5','5 or more']]});
-    if(has(p,'ESO')) yn('h6','Will any new building be more than 6 metres above ground level?','');
-    yn('multi_std','Does the design meet every listed Clause 55 standard?','Meeting them removes third-party review rights, and for two dwellings can make it VicSmart.');
+    q.push({id:'multi_st',label:'How many storeys (excluding basement)?',type:'pick',opts:[['3','Up to 3'],['5','4 to 6'],['8','7 or more']]});
+    if(has(p,'ESO')||has(p,'SLO')) yn('h6','Will any new building be more than 6 metres above ground level?','');
+    if((+S.f.multi_st||3)<=3) yn('multi_std', S.persona==='pro' ? 'Does the design meet every listed Clause 55 standard?' : 'Does your design tick every box in the state’s standard design rules for this kind of development — things like setbacks, private open space, overlooking and overshadowing neighbours, and parking?', S.persona==='pro' ? 'Meeting them removes third-party review rights, and for two dwellings can make it VicSmart. This only applies at three storeys or less — Clause 55 doesn’t govern taller buildings.' : 'Meeting every one of these removes your neighbours’ right to object or appeal, and for two dwellings can mean a fast-tracked VicSmart application. This only applies at three storeys or less. If you’re not sure whether your design meets them all, that’s a genuine judgement call — we’ll flag it for council to confirm rather than guess.');
+    if(has(p,'SLO')){
+      yn('slo_impact','Will the buildings use muted, natural, low-reflective colours and materials, with no more than 600 mm change in ground level?','Townhouses or units won’t meet Schedule 1’s size and height exemption test outside the Housing Choice and Transport, Activity Centre and Precinct Zones, so a permit is needed there regardless — this only matters in those zones.');
+      q.push(sloBankQ());
+    }
   }
   if(k==='fence'){
     const zoneFence = zoneKind(p.zone)==='res' && (p.area<300 || S.aspects.multi);
@@ -959,6 +1050,10 @@ function followUps(k){
     else if(has(p,'DDO17') && S.f.fence_front!=='no') q.push({id:'fence_h',label:'How high will the fence be above natural ground level?',type:'pick',help:'DDO17 needs a permit for a front fence above 1.2 m.',opts:[['h12','1.2 m or less'],['h15','Over 1.2 m, up to 1.5 m'],['h20','Over 1.5 m, up to 2 m'],['h99','More than 2 m'],['unsure','Not sure']]});
     if(has(p,'HO')) yn('fence_vis','Will the fence be visible from a street (other than a lane) or a public park?','The Heritage Overlay only controls fences that can be seen from a street or park.');
     if(has(p,'LSIO')) yn('fence_perm','Will the fence be at least 90% open (permeable) for the first 300 mm above the flood level?','Open-style fences that let flood water through are exempt under the flood overlay schedule. Solid paling or masonry fences are not.');
+    if(has(p,'SLO')){
+      yn('slo_fence_style','Is it an open rural-style fence (post-and-wire, timber post-and-rail, or wire/chain mesh) 1.4 m or less high, or at least 50% transparent and under 1.8 m high?','Schedule 1 to Clause 42.03 (Significant Landscape Overlay) exempts a fence only if it is this style and more than 50 m from the top of bank of the waterway.');
+      q.push(sloBankQ());
+    }
   }
   if(k==='demo'){
     q.push({id:'demo_what',label:'What are you demolishing?',type:'pick',opts:[['house','The house (or part of it)'],['outbuilding','An outbuilding (garage, carport, shed…)'],['fence','A fence']]});
@@ -969,6 +1064,11 @@ function followUps(k){
   }
   if(k==='tree'){
     if(has(p,'ESO')) yn('tree_small','Is the trunk circumference less than 0.35 m (1 m above ground), and is the tree under 6 m high or with a branch spread under 4 m?','');
+    if(has(p,'SLO')) yn('slo_tree_small','Is the vegetation under 6 m high, with a trunk diameter under 0.4 m (measured 1.4 m above ground) and a canopy spread under 4 m?','Schedule 1 to Clause 42.03 (Significant Landscape Overlay) exempts small vegetation meeting this size test from needing a permit to remove it. It also exempts noxious weeds, windbreaks, plantations and orchards, and some public-authority works — not modelled here.');
+    if(RES_ZONE.test(p.zone)){
+      yn('tree_canopy','Is the tree at least 5 m tall, with an average canopy width of at least 4 m?','This is the scheme’s test for an “existing canopy tree” under Clause 52.37. A tree smaller than this isn’t covered by that permit trigger.');
+      if(S.existing==='dwelling' && S.f.tree_canopy!=='no') yn('tree_boundary','Is the tree within 6 m of the street frontage, or within 4.5 m of the rear boundary?','A “boundary canopy tree” under Clause 52.37. These still need a permit even though an existing dwelling is already on the site.');
+    }
     q.push({id:'tree_n',label:'How many trees?',type:'pick',opts:[['1','One'],['2','Two or more']]});
   }
   if(k==='use' && S.f.use_type){
@@ -976,7 +1076,8 @@ function followUps(k){
     (ev.conds||[]).forEach(c=>{ if(c.auto) q.push({id:c.id,type:'spatial',label:c.text,value:c.val==='yes',detail:c.detail,override:c.override}); else q.push({id:c.id,label:c.text,type:'yn',cond:true,unsure:true}); });
   }
   if(k==='park'){
-    q.push({id:'park_n',label:'How many car spaces short of the requirement?',type:'pick',opts:[['le10','10 or fewer'],['gt10','More than 10']]});
+    q.push({id:'park_n',label:'How many car spaces short of the requirement?',type:'pick',opts:[['le10','10 or fewer'],['gt10','More than 10']],
+      helpHtml:`The scheme’s base rate is set by use in ${schemeLink('Clause 52.06-5','clink')} (and can be reduced near frequent public transport). We don’t calculate the exact number for you here — that needs the proposal’s floor area or dwelling mix, which this demo doesn’t capture yet. Check the clause, your parking report, or ask council for the figure that applies to this site.`});
     yn('park_existing','Is this for a new use of an existing building, without increasing its floor area?','');
   }
   return q;
@@ -1017,7 +1118,21 @@ function evaluate(regime){
   const zk=zoneKind(p.zone), zc=zoneClause(p.zone), A=S.aspects, F=S.f, lot=p.area;
   const T=(o)=>R.triggers.push(o), N=(o)=>R.noPermit.push(o), G=(o)=>R.gaps.push(o);
   const gapZone=(aspect)=>G({aspect,control:p.zone,label:'Zone rules not in the loaded scheme',why:`Vicmap shows ${p.zone} on this land today, but the ${p.zone} schedule post-dates the loaded ${SCHEME.name} (${SCHEME.version}). The rules engine will not guess — council confirms, or the scheme is re-loaded.`});
-  const gapSLO=(aspect)=>{ if(has(p,'SLO')) G({aspect,control:'SLO1',label:'Significant Landscape Overlay rules not loaded',why:`SLO1 applies on Vicmap but its schedule is not in the loaded scheme (${SCHEME.version}). It may require a permit for buildings, works or tree removal.`}); };
+  // Significant Landscape Overlay — Schedule 1 (Clause 42.03). sizeKnown=true asks the applicant about
+  // height/floor-area; sizeKnown=false (new dwellings, multi-unit) assumes the size/height exemption test
+  // fails, since a new dwelling or townhouses won't be under 6 m / 50 m² of additional floor area.
+  const sloBuilding=(aspect,{sizeKnown,vs}={})=>{
+    if(!has(p,'SLO')) return;
+    const otherZone = sloOtherZoneTest(p);
+    const bank = sloBank(p);
+    if(bank===null){ G({aspect,control:'SLO1',label:'Distance from the top of bank not available',why:'Schedule 1 to Clause 42.03 turns on distance from the top of bank of the waterway, and the loaded map data doesn’t cover this land — council to confirm.'}); return; }
+    const impactOk = F.slo_impact==='yes', sizeOk = !otherZone || (sizeKnown && F.slo_gfa50==='yes' && F.h6==='no');
+    if(impactOk && bank && sizeOk){
+      N({aspect,control:'SLO1',clause:'SLO1-3.0',label:`No landscape-overlay permit — muted colours, ≤600 mm ground-level change${otherZone?', 6 m or less high, 50 m² or less additional floor area,':''} and more than 50 m from the top of bank`});
+    } else {
+      T({aspect,control:'SLO1',clause:'42.03-2',label:'Buildings and works in the Significant Landscape Overlay (Schedule 1)',vs:vs||null,why:sloWhy(otherZone,sizeKnown)+' '+sloBankText(p)});
+    }
+  };
   const devAsp=['ext','out','newd','ssd','multi','demo','fence','comm','devOther'];
   R.hasDev = devAsp.some(k=>A[k]);
   const ho=hoCode(p);
@@ -1033,7 +1148,7 @@ function evaluate(regime){
     if(has(p,'DDO17')){ if(lot>300) N({aspect:'ext',control:'DDO17',clause:'DDO17-2.0',label:'No DDO permit to extend a single dwelling on a lot over 300 m² (within preferred heights and setbacks)'}); else T({aspect:'ext',control:'DDO17',clause:'43.02-2',label:'Buildings and works in DDO17',vs:null}); }
     if(has(p,'LSIO')){ if(F.ext_ground==='no') N({aspect:'ext',control:'LSIO',clause:'LSIO-3.0',label:'No flood-overlay permit for an upper-storey-only extension'}); else T({aspect:'ext',control:'LSIO',clause:'44.04-2',label:'Buildings and works on land subject to inundation',vs:null,exempt:'full',referral:'Melbourne Water (floodplain management authority)'}); }
     if(has(p,'ESO')){ if(F.h6!=='no') T({aspect:'ext',control:'ESO1',clause:'42.01-2',label:'Buildings more than 6 m high in ESO1',vs:null}); else N({aspect:'ext',control:'ESO1',clause:'ESO1-3.0',label:'No ESO permit — buildings in a residential zone 6 m or less above ground'}); }
-    gapSLO('ext');
+    sloBuilding('ext',{sizeKnown:true});
   }
   // ── Outbuildings ──
   if(A.out){
@@ -1048,13 +1163,15 @@ function evaluate(regime){
       if(open) N({aspect:'out',control:'LSIO',clause:'LSIO-3.0',label:'No flood-overlay permit — open structure without walls or enclosed foundations'});
       else T({aspect:'out',control:'LSIO',clause:'44.04-2',label:'Buildings and works on land subject to inundation',vs:null,exempt:'full',referral:'Melbourne Water (floodplain management authority)'}); }
     if(has(p,'ESO')) N({aspect:'out',control:'ESO1',clause:'ESO1-3.0',label:'No ESO permit — building 6 m or less in a residential zone'});
-    gapSLO('out');
+    sloBuilding('out',{sizeKnown:true,vs:{cls:'59.05'}});
   }
   // ── New house ──
   if(A.newd){
     const second = S.existing==='dwelling' && !A.demo;
     if(zk==='res'){
-      if(second) T({aspect:'newd',control:p.zone,clause:zc+'-7',label:'Construct a dwelling where a dwelling already exists on the lot',vs:{cls:'VS-55',std:F.newd_std},exempt:F.newd_std==='yes'?'review':null});
+      if(second){ T({aspect:'newd',control:p.zone,clause:zc+'-7',label:'Construct a dwelling where a dwelling already exists on the lot',vs:{cls:'VS-55',std:F.newd_std},exempt:F.newd_std==='yes'?'review':null});
+        if(F.newd_std==='unsure') G({aspect:'newd',control:p.zone,label:'Council to confirm whether the design meets every listed Clause 55 standard',why:'Whether a design meets every Clause 55 standard is ultimately a planner’s call, not a fixed checklist. VicSmart eligibility and the third-party review exemption both depend on it.'});
+      }
       else if(lot<300) T({aspect:'newd',control:p.zone,clause:zc+'-5',label:'Construct one dwelling on a lot under 300 m²',vs:{cls:'VS-54',std:F.ext_std},exempt:F.ext_std==='yes'?'review':null});
       else N({aspect:'newd',control:p.zone,clause:zc+'-5',label:`No zone permit — one dwelling on a ${lot} m² lot`});
     } else if(zk==='c1z') T({aspect:'newd',control:'C1Z',clause:'34.01-4',label:'Buildings and works in the Commercial 1 Zone',vs:null});
@@ -1063,7 +1180,7 @@ function evaluate(regime){
     if(has(p,'DDO17')) T({aspect:'newd',control:'DDO17',clause:'43.02-2',label:'Buildings and works in DDO17',vs:null});
     if(has(p,'LSIO')) T({aspect:'newd',control:'LSIO',clause:'44.04-2',label:'Buildings and works on land subject to inundation',vs:null,exempt:'full',referral:'Melbourne Water (floodplain management authority)'});
     if(has(p,'ESO')){ if(F.h6!=='no') T({aspect:'newd',control:'ESO1',clause:'42.01-2',label:'Buildings more than 6 m high in ESO1',vs:null}); else N({aspect:'newd',control:'ESO1',clause:'ESO1-3.0',label:'No ESO permit — building 6 m or less in a residential zone'}); }
-    gapSLO('newd');
+    sloBuilding('newd',{sizeKnown:false});
   }
   // ── Small second dwelling ──
   if(A.ssd){
@@ -1080,19 +1197,21 @@ function evaluate(regime){
     if(has(p,'DDO')){ if(F.ssd_h5==='yes') N({aspect:'ssd',control:'DDO17',clause:'43.02-2',label:'No DDO permit — 5 m or less, muted tones and colours'}); else T({aspect:'ssd',control:'DDO17',clause:'43.02-2',label:'Buildings and works in DDO17',vs:null}); }
     if(has(p,'LSIO')) T({aspect:'ssd',control:'LSIO',clause:'44.04-2',label:'Buildings and works on land subject to inundation',vs:null,exempt:'full',referral:'Melbourne Water (floodplain management authority)'});
     if(has(p,'ESO')) N({aspect:'ssd',control:'ESO1',clause:'ESO1-3.0',label:'No ESO permit — building 6 m or less'});
-    gapSLO('ssd');
+    sloBuilding('ssd',{sizeKnown:true,vs:{cls:'59.05'}});
   }
   // ── Townhouses / units ──
   if(A.multi){
     const two=F.multi_n==='2', st=+F.multi_st||3;
-    if(zk==='res') T({aspect:'multi',control:p.zone,clause:zc+'-7',label: two?'Construct two dwellings on a lot':'Construct three or more dwellings on a lot',vs: (two && st<=3)?{cls:'VS-55',std:F.multi_std}:null, exempt:F.multi_std==='yes'?'review':null, storeys:st});
+    if(zk==='res'){ T({aspect:'multi',control:p.zone,clause:zc+'-7',label: two?'Construct two dwellings on a lot':'Construct three or more dwellings on a lot',vs: (two && st<=3)?{cls:'VS-55',std:F.multi_std}:null, exempt:(F.multi_std==='yes' && st<=3)?'review':null, storeys:st});
+      if(st<=3 && F.multi_std==='unsure') G({aspect:'multi',control:p.zone,label:'Council to confirm whether the design meets every listed Clause 55 standard',why:'Whether a design meets every Clause 55 standard is ultimately a planner’s call, not a fixed checklist. VicSmart eligibility and the third-party review exemption both depend on it.'});
+    }
     else if(zk==='c1z') T({aspect:'multi',control:'C1Z',clause:'34.01-4',label:'Buildings and works in the Commercial 1 Zone',vs:null,storeys:st});
     else gapZone('multi');
     if(ho) T({aspect:'multi',control:ho,clause:'43.01-1',label:'Construct a building in a Heritage Overlay',vs:null});
     if(has(p,'DDO17')) T({aspect:'multi',control:'DDO17',clause:'43.02-2',label:'Buildings and works in DDO17',vs:null});
     if(has(p,'LSIO')) T({aspect:'multi',control:'LSIO',clause:'44.04-2',label:'Buildings and works on land subject to inundation',vs:null,exempt:'full',referral:'Melbourne Water (floodplain management authority)'});
     if(has(p,'ESO')){ if(F.h6!=='no') T({aspect:'multi',control:'ESO1',clause:'42.01-2',label:'Buildings more than 6 m high in ESO1',vs:null}); else N({aspect:'multi',control:'ESO1',clause:'ESO1-3.0',label:'No ESO permit — buildings 6 m or less'}); }
-    gapSLO('multi');
+    sloBuilding('multi',{sizeKnown:false});
   }
   // ── Demolition ──
   if(A.demo){
@@ -1119,7 +1238,12 @@ function evaluate(regime){
     if(has(p,'LSIO')){ if(F2.fence_perm==='yes') N({aspect:'fence',control:'LSIO',clause:'LSIO-3.0',clk:'LSIO-F',label:'No flood-overlay permit — fence at least 90% permeable for the first 300 mm above flood level'});
       else T({aspect:'fence',control:'LSIO',clause:'44.04-2',label:'Construct a fence on land subject to inundation',vs:null,exempt:'full',referral:'Melbourne Water (floodplain management authority)'}); }
     if(has(p,'ESO')) N({aspect:'fence',control:'ESO1',clause:'42.01-2',clk:'42.01-2F',label:'No ESO permit — ESO1 does not specify fences'});
-    gapSLO('fence');
+    if(has(p,'SLO')){
+      const bank=sloBank(p);
+      if(bank===null) G({aspect:'fence',control:'SLO1',label:'Distance from the top of bank not available',why:'Schedule 1 to Clause 42.03 turns on distance from the top of bank of the waterway, and the loaded map data doesn’t cover this land — council to confirm.'});
+      else if(bank && F2.slo_fence_style==='yes') N({aspect:'fence',control:'SLO1',clause:'SLO1-3.0',clk:'SLO1-F',label:'No landscape-overlay permit — more than 50 m from the top of bank, in an open rural-style or largely transparent fence'});
+      else T({aspect:'fence',control:'SLO1',clause:'42.03-2',clk:'SLO1-F',label:'Construct a fence in the Significant Landscape Overlay (Schedule 1)',vs:{cls:'59.05'},why:'Schedule 1 to Clause 42.03 exempts a fence only if it’s more than 50 m from the top of bank and is an open rural-style fence (post-and-wire, timber post-and-rail, or wire or chain mesh) 1.4 m or less high, or at least 50% transparent and under 1.8 m high. '+sloBankText(p)});
+    }
   }
   // ── Commercial works ──
   if(A.comm){
@@ -1132,7 +1256,16 @@ function evaluate(regime){
     let any=false;
     if(ho){ any=true; N({aspect:'tree',control:ho,clause:'HO-sched',label:`No heritage permit — tree controls do not apply to ${ho}`}); }
     if(has(p,'ESO')){ any=true; if(F.tree_small==='yes') N({aspect:'tree',control:'ESO1',clause:'ESO1-3.0',label:'No ESO permit — small tree exemption'}); else T({aspect:'tree',control:'ESO1',clause:'42.01-2',label:'Remove, destroy or lop vegetation in ESO1',vs:F.tree_n==='1'?{cls:'59.06'}:null}); }
-    if(has(p,'SLO')){ any=true; gapSLO('tree'); }
+    if(has(p,'SLO')){ any=true;
+      if(F.slo_tree_small==='yes') N({aspect:'tree',control:'SLO1',clause:'SLO1-3.0',label:'No landscape-overlay permit — small-vegetation exemption (under 6 m high, under 0.4 m trunk diameter, under 4 m canopy)'});
+      else T({aspect:'tree',control:'SLO1',clause:'42.03-2',label:'Remove, destroy or lop vegetation in the Significant Landscape Overlay (Schedule 1)',vs:F.tree_n==='1'?{cls:'59.06'}:null,why:'Schedule 1 to Clause 42.03 also exempts noxious weeds, windbreaks, plantations and orchards, and vegetation removed by a public authority or council for the transport system or stream management — none of that is modelled here; if one of those applies, check with council.'});
+    }
+    if(RES_ZONE.test(p.zone)){
+      any=true;
+      if(F.tree_canopy==='no') N({aspect:'tree',control:p.zone,clause:'52.37-2',label:'No canopy-tree permit — below the scheme’s size test for an “existing canopy tree” (5 m tall, 4 m average canopy width)'});
+      else if(S.existing==='dwelling' && F.tree_boundary==='no') N({aspect:'tree',control:p.zone,clause:'52.37-2',label:'No canopy-tree permit — an existing dwelling is already on the site and this isn’t a boundary tree'});
+      else T({aspect:'tree',control:p.zone,clause:'52.37-2',label:'Remove, destroy or lop an existing canopy tree in a residential zone',vs:{cls:'52.37-2'},why:'Clause 52.37 (new from Amendment VC315) covers the General Residential, Neighbourhood Residential, Residential Growth, Housing Choice and Transport, Mixed Use and Township Zones. It doesn’t model the full table of exemptions (dead trees, bushfire and emergency works, traditional owner activity, and so on) — check Clause 52.37-8 for those.'});
+    }
     if(!any) N({aspect:'tree',control:p.zone,clause:'—',label:'No planning control on this land requires a permit to remove a tree. Council local laws may still apply.'});
   }
   // ── Use ──
@@ -1146,7 +1279,9 @@ function evaluate(regime){
       const spat=ev.conds.filter(c=>c.auto).map(c=>'Spatial check: '+c.detail).join(' ');
       if(ev.state==='unsure' && sec!==3) G({aspect:'use',control:p.zone,label:`Use for ${lbl}: council to confirm the zone condition`,why:'You weren’t sure whether a condition is met. If it isn’t, the use moves to a more restrictive category.'});
       else if(sec===1) N({aspect:'use',control:p.zone,clause:tc,label:`Use for ${lbl}: Section 1 — no permit needed for the use`,note:[e.note,spat].filter(Boolean).join(' ')});
-      else if(sec===2) T({aspect:'use',control:p.zone,clause:tc,label:`Use for ${lbl}: Section 2 — permit required`,vs:null,note:[e.note,spat].filter(Boolean).join(' ')});
+      else if(sec===2){ T({aspect:'use',control:p.zone,clause:tc,label:`Use for ${lbl}: Section 2 — permit required`,vs:null,note:[e.note,spat].filter(Boolean).join(' ')});
+        if(zk==='res' && R.hasDev) T({aspect:'use',control:p.zone,clause:zc+'-10',label:`Construct a building, or construct or carry out works, for ${lbl}`,vs:null,why:'A separate permit from the use permit. VicSmart eligibility depends on estimated cost and, where the land adjoins a residential zone, meeting listed Clause 54 standards — not modelled here; check against Clause 59.04.'});
+      }
       else R.prohibited.push({aspect:'use',control:p.zone,clause:tc,label:`Use for ${lbl}: Section 3 — prohibited in the ${CONTROL_NAMES[p.zone]||p.zone}`,why: (ev.base!==3?'A condition that allows the use is not met, so a more restrictive category applies. ':'No permit can be granted for a prohibited use, whatever documents are supplied. ')+spat});
     }
   }
@@ -1156,7 +1291,7 @@ function evaluate(regime){
     else T({aspect:'park',control:'52.06',clause:'52.06-3',label:'Reduce the number of car parking spaces required',vs:F.park_n==='le10'?{cls:'59.10'}:null,exempt:'park'});
   }
   // Where the applicant wasn't sure
-  const ASSUME={ext_std:'Treated as not meeting the listed standards, so not VicSmart. If your designer confirms they are met, re-check.',newd_std:'Treated as not meeting the Clause 55 standards.',multi_std:'Treated as not meeting the Clause 55 standards — no VicSmart and no review exemption.',ext_ground:'Treated as adding ground-floor area, which needs a flood-overlay permit.',h6:'Treated as more than 6 m high, which needs an ESO permit.',out_small:'Treated as larger than 10 m² or 3 m.',out_walls:'Treated as having walls or enclosed foundations.',ssd_h5:'Treated as not meeting the 5 m / muted-tones exemption.',comm_facade:'Treated as more than a glazing-preserving façade change.',tree_small:'Treated as not a small tree, so the ESO permit applies.',park_existing:'Treated as not qualifying for the existing-building exemption.',fence_front:'Treated as a front fence within 3 m of a street.',fence_h:'Treated as higher than the limit.',fence_vis:'Treated as visible from the street, so the heritage permit applies.',fence_perm:'Treated as a solid fence, so the flood-overlay permit and referral apply.'};
+  const ASSUME={ext_std:'Treated as not meeting the listed standards, so not VicSmart. If your designer confirms they are met, re-check.',ext_ground:'Treated as adding ground-floor area, which needs a flood-overlay permit.',h6:'Treated as more than 6 m high, which needs an ESO permit.',out_small:'Treated as larger than 10 m² or 3 m.',out_walls:'Treated as having walls or enclosed foundations.',ssd_h5:'Treated as not meeting the 5 m / muted-tones exemption.',comm_facade:'Treated as more than a glazing-preserving façade change.',tree_small:'Treated as not a small tree, so the ESO permit applies.',tree_canopy:'Treated as meeting the canopy-tree size test, so the Clause 52.37 permit applies.',tree_boundary:'Treated as a boundary tree, so the Clause 52.37 permit still applies despite the existing-dwelling exemption.',park_existing:'Treated as not qualifying for the existing-building exemption.',fence_front:'Treated as a front fence within 3 m of a street.',fence_h:'Treated as higher than the limit.',fence_vis:'Treated as visible from the street, so the heritage permit applies.',fence_perm:'Treated as a solid fence, so the flood-overlay permit and referral apply.',slo_impact:'Treated as not meeting the colours/ground-level condition, so the landscape-overlay permit applies.',slo_gfa50:'Treated as more than 50 m², so the landscape-overlay permit applies.',slo_fence_style:'Treated as not meeting the open-style exemption, so the landscape-overlay permit applies.',slo_tree_small:'Treated as not meeting the small-vegetation size test, so the landscape-overlay permit applies.'};
   R.assumed=Object.keys(S.aspects).filter(k=>S.aspects[k]).flatMap(k=>followUps(k)).filter(q=>F[q.id]==='unsure'&&ASSUME[q.id]).map(q=>({q:q.label,a:ASSUME[q.id]}));
   if(p.zones && p.zones.length>1) G({aspect:'site',control:p.zones.join(' / '),label:'The lots are in different zones',why:'Each zone applies to the part of the land it covers. This demo assesses against the zone of the first address; council would assess each part.'});
   // DCPO note
@@ -1232,26 +1367,29 @@ function buildRequirements(R, regime){
       const cls=new Set(R.triggers.map(t=>t.vs.cls));
       if(cls.has('VS-54')){ add2('Z12_plans',{confirm:true}); add2('C54_site',{confirm:true}); add2('C54_design',{confirm:true}); add2('C54_stmt',{confirm:true}); }
       if(cls.has('VS-55')){ add2('Z12_plans',{confirm:true}); add2('C55_site',{confirm:true}); add2('C55_design',{confirm:true}); add2('C55_stmt',{confirm:true}); }
-      if([...cls].some(c=>/^59/.test(c))) add2('VS_title');
+      if([...cls].some(c=>/^59/.test(c)||c==='52.37-2')) add2('VS_title');
       if(cls.has('59.03')){ ['VS03_plan','VS03_nearby','VS03_photo','VS03_reason'].forEach(id=>add2(id)); }
       if(cls.has('59.07')){ ['VS07_plan','VS07_desc','VS07_colour','VS07_photoA','VS07_photoS'].forEach(id=>add2(id)); }
       if(cls.has('59.05')){ add2('VS05_plan'); if(has(p,'DDO')) add2('VS05_ddo'); add2('VS05_photo'); }
       if(cls.has('59.04')){ ['VS04_desc','VS04_layout','VS04_elev','VS04_photo','VS04_stmt'].forEach(id=>add2(id)); }
       if(cls.has('59.06')){ ['VS06_plan','VS06_stmt','VS06_photo'].forEach(id=>add2(id)); }
       if(cls.has('59.10')){ ['VS10_plan','VS10_stmt'].forEach(id=>add2(id)); }
+      if(cls.has('52.37-2')){ add2('CT_plan'); add2('CT_why'); }
     } else {
       R.triggers.forEach(t=>{
         const c=t.clause;
-        if(t.aspect==='fence'){ if(/^32/.test(c)) ['VS03_plan','VS03_nearby','VS03_photo','VS03_reason'].forEach(id=>add2(id)); if(c==='44.04-2') add2('LSIO_plans'); if(c==='43.02-2') add2('VS05_plan'); return; }
+        if(t.aspect==='fence'){ if(/^32/.test(c)) ['VS03_plan','VS03_nearby','VS03_photo','VS03_reason'].forEach(id=>add2(id)); if(c==='44.04-2') add2('LSIO_plans'); if(c==='43.02-2') add2('VS05_plan'); if(c==='42.03-2') add2('SLO1_survey'); return; }
         if(/-5$|-6$/.test(c) && /^32/.test(c)){ add2('Z12_plans'); add2('Z12_effects'); add2('C54_site'); add2('C54_design'); add2('C54_stmt'); }
         if(/^32\.0[89]-7$/.test(c)){ add2('Z12_plans'); add2('Z12_effects');
-          const st=t.storeys||3; if(st<=3){ add2('C55_site'); add2('C55_design'); add2('C55_stmt'); } else if(st===4) add2('C57_site'); else add2('C58_ucr'); }
+          const st=t.storeys||3; if(st<=3){ add2('C55_site'); add2('C55_design'); add2('C55_stmt'); } else if(st<=6) add2('C57_site'); else add2('C58_ucr'); }
         if(/^32\.0[89]-2$/.test(c)){ add2('Z12_plans'); add2('Z12_effects'); }
         if(c==='34.01-1') add2('C34_use');
         if(c==='34.01-4') add2('C34_bw');
         if(c==='44.04-2') add2('LSIO_plans');
         if(c==='43.02-2' && t.control==='DDO17'){ ['DDO17_ud','DDO17_traffic','DDO17_acoustic','DDO17_waste'].forEach(id=>add2(id)); }
         if(c==='52.06-3') add2('CP_cpda');
+        if(c==='52.37-2'){ add2('VS_title'); add2('CT_plan'); add2('CT_why'); }
+        if(c==='42.03-2' && t.control==='SLO1'){ if(t.aspect==='tree') add2('SLO1_veg'); else { add2('SLO1_survey'); add2('SLO1_landscape'); } }
       });
     }
     // Layer 3 — council's commonly requested (illustrative)
@@ -1323,7 +1461,7 @@ function proposalText(){
   if(A.out) bits.push(`construction of a ${({carport:'carport',garage:'garage',deck:'deck',pergola:'pergola or verandah',shed:'shed'})[F.out_type]||'outbuilding'}`);
   if(A.newd) bits.push('construction of a dwelling');
   if(A.ssd) bits.push('construction of a small second dwelling');
-  if(A.multi) bits.push(`construction of ${F.multi_n==='2'?'two':'three or more'} dwellings${F.multi_st?` of up to ${F.multi_st==='5'?'five or more':F.multi_st} storeys`:''}`);
+  if(A.multi) bits.push(`construction of ${F.multi_n==='2'?'two':'three or more'} dwellings${F.multi_st?` of ${({3:'up to 3',5:'4 to 6',8:'7 or more'})[F.multi_st]||F.multi_st} storeys`:''}`);
   if(A.fence) bits.push(`construction of a ${F.fence_front==='no'?'':'front '}fence${({h12:' up to 1.2 m',h15:' up to 1.5 m',h20:' up to 2 m',h99:' over 2 m'})[F.fence_h]||''}`);
   if(A.comm) bits.push('buildings and works to the existing commercial building');
   if(A.tree) bits.push(F.tree_n==='2'?'removal of trees':'removal of a tree');
@@ -1342,7 +1480,7 @@ function gate(R){
   const q=R.requirements, hard=[], declare=[], advise=[];
   R.prohibited.forEach(x=>hard.push({t:x.label,cite:x.clause}));
   q.L1.forEach(x=>{ if(!x.ok) (x.tier==='hard'?hard:declare).push({t:x.t,cite:x.cite,where:x.where}); });
-  q.L2.forEach(x=>{ if(!x.ok) declare.push({t:x.t,cite:x.cl,where:3}); });
+  q.L2.forEach(x=>{ if(!x.ok) (x.w?declare:hard).push({t:x.t,cite:x.cl,where:3}); });
   q.L3.forEach(x=>{ if(!x.ok) advise.push({t:x.t,where:3}); });
   return {hard,declare,advise};
 }
@@ -1350,15 +1488,36 @@ function gate(R){
 // ═══════════════════════════════════════════════════════════════════
 //  RENDER
 // ═══════════════════════════════════════════════════════════════════
-const EXISTING = [['dwelling','A house'],['vacant','Vacant land'],['shop','A shop'],['office','An office'],['other','Something else']];
+const EXISTING = [['dwelling','A house'],['vacant','Vacant land'],['shop','A shop'],['office','An office']];
+// Less common current-land-use categories, revealed behind "Something else" — the same PPARS
+// legacy-schema categories as the state-reporting badge above (see PPARS, line ~621).
+const EXISTING_MORE = [
+  ['agri','Agriculture'],
+  ['food','Food and drink premises'],
+  ['indwh','Industry and warehouse'],
+  ['leisure','Leisure and recreation'],
+  ['assembly','Place of assembly'],
+  ['childcare','Child care'],
+  ['edu','Education centre'],
+  ['minerals','Mineral extraction'],
+  ['boat','Pleasure boat facility'],
+  ['transport','Transport terminal'],
+  ['utility','Utility installation'],
+  ['mixed','Mixed use'],
+  ['energy','Energy generation facility'],
+  ['other','Other / not listed'],
+];
+function existingIsMore(v){ return EXISTING_MORE.some(e=>e[0]===v); }
+function existingLabel(v){ if(!v) return null; const c=EXISTING.find(e=>e[0]===v)||EXISTING_MORE.find(e=>e[0]===v); return c?c[1]:null; }
 let R = null;
 function render(){
   R = evaluate(S.regime);
+  applyPathwayChoice();
   document.body.classList.toggle('pro', S.persona==='pro');
   document.querySelectorAll('#regimeSeg button').forEach(b=>{ b.classList.toggle('on', b.dataset.r===S.regime); b.classList.toggle('reform', b.dataset.r==='r2027'); });
-  document.querySelectorAll('#personaSeg button').forEach(b=>b.classList.toggle('on', b.dataset.p===S.persona));
   $('#regimeNote').textContent = REGIMES[S.regime].note;
   $('#avatar').textContent = S.applicant.name ? S.applicant.name.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase() : '?';
+  const pl=$('#privacyLinkTop'); if(pl) pl.style.display = S.step===0 ? '' : 'none';
   renderStepper(); renderRail();
   const m=$('#main');
   if(S.submitted){ m.innerHTML = viewSubmitted(); return; }
@@ -1372,17 +1531,34 @@ function stepAllowed(i){
   const any=Object.values(S.aspects).some(Boolean);
   if(i===2) return any && projectComplete();
   if(!projectComplete() || !any) return false;
-  return !['none','prohibited'].includes(R.status);
+  if(['none','prohibited'].includes(R.status)) return false;
+  if(i>=4) return docsGateOk();
+  return true;
+}
+function useSectionDone(){
+  if(!S.useChangeAns) return false;
+  if(S.useChangeAns==='yes' && !S.useChoice) return false;
+  if(S.useChoice==='other' && !S.useOther.trim()) return false;
+  return true;
 }
 function projectComplete(){
   const p=prop(); if(!p) return false;
-  if(!S.existing || !S.useChoice) return false;
+  if(!S.existing || !S.useChangeAns || !S.bwAns) return false;
+  if(S.useChangeAns==='yes' && !S.useChoice) return false;
   if(S.useChoice==='other' && !S.useOther.trim()) return false;
   if(S.aspects.devOther && !S.devOther.trim()) return false;
   const on=Object.keys(S.aspects).filter(k=>S.aspects[k]);
   if(!on.length) return false;
-  if(p.covenant && !S.covenantBreach) return false;
-  return on.every(answered);
+  if(!on.every(answered)) return false;
+  return covenantResolved();
+}
+function covenantResolved(){
+  if(!S.covAnswer) return false;
+  if(S.covAnswer==='no') return true;
+  if(!S.titleScanned) return false;
+  const p=prop();
+  if(p && p.covenant) return !!S.covenantBreach;
+  return true;
 }
 function renderStepper(){
   $('#stepper').innerHTML = STEPS.map((s,i)=>{
@@ -1391,14 +1567,14 @@ function renderStepper(){
     return `<button class="step ${cls}" role="tab" aria-selected="${i===S.step}" aria-disabled="${!ok}" onclick="goStep(${i})"><span class="n">${cls==='done'?'✓':i+1}</span>${s.label}</button>`;
   }).join('');
 }
-function goStep(i){ if(S.submitted) return; R=evaluate(S.regime); if(!stepAllowed(i)) { toast('Finish the earlier steps first'); return; } S.step=i; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function goStep(i){ if(S.submitted) return; R=evaluate(S.regime); applyPathwayChoice(); if(!stepAllowed(i)) { toast('Finish the earlier steps first'); return; } S.step=i; render(); window.scrollTo({top:0,behavior:'smooth'}); }
 function next(){ goStep(S.step+1); }
 function back(){ if(S.step>0){ S.step--; render(); } }
 function nav(opts={}){
   const n = opts.next!==false ? `<button class="btn primary" ${opts.disabled?'disabled':''} onclick="${opts.onNext||'next()'}">${opts.label||'Continue'} →</button>` : '';
   return `<div class="panel-f"><div>${S.step>0?'<button class="btn ghost" onclick="back()">← Back</button>':''}</div><div class="row">${opts.extra||''}${n}</div></div>`;
 }
-function clauseChip(c){ return `<span class="badge b-clause">${esc(c)}</span>`; }
+function clauseChip(c){ return schemeLink(esc(c),'badge b-clause'); }
 function ctrlChip(c){ return `<span class="ctrl ${NOT_IN_LOADED_SCHEME.includes(c)?'gap':''}">${esc(c)}</span>`; }
 function callout(kind,title,body,icon){ return `<div class="callout co-${kind}"><span class="ci">${icon|| (kind==='ok'?'✓':kind==='bad'?'!':kind==='reform'?'27':'i')}</span><div><b>${title}</b>${body?`<p>${body}</p>`:''}</div></div>`; }
 function reformBadge(t){ return `<span class="badge b-reform">${t||'2027 · assumption'}</span>`; }
@@ -1466,7 +1642,7 @@ function viewProperty(){
       <button class="btn sm ghost" style="margin-top:8px" onclick="S.addingLand=false;S.addQuery='';render()">Done</button></div>`;
   } else addPanel = `<button class="btn sm" onclick="S.addingLand=true;render()">+ Add another address</button>`;
   const spLine = sp&&sp.found ? `<div class="spatial-strip"><span class="badge b-info">Spatial analysis</span><span>${esc(trzText(p))}</span><span class="muted">·</span><span>${esc(spatialResText(p))}</span></div>` : '';
-  return `<div class="panel"><div class="panel-h"><div><div class="panel-t">Land in this application</div><div class="panel-s">${single?'One address, so it is the primary address. Add another if the proposal covers more than one property.':`${parts.length} addresses, ${p.area} m² in total. The primary address is the one the application is registered against. Planning controls are combined across all of them.`}</div></div><button class="btn sm" onclick="clearProp()">Start again</button></div>
+  return `<div class="panel"><div class="panel-h"><div><div class="panel-t">The application location</div>${single?'':`<div class="panel-s">${parts.length} addresses, ${p.area} m² in total. The primary address is the one the application is registered against. Planning controls are combined across all of them.</div>`}</div><button class="btn sm" onclick="clearProp()">Start again</button></div>
     <div class="panel-b stack">
       <div class="land-list">${rows}</div>
       <div>${addPanel}</div>
@@ -1478,8 +1654,6 @@ function viewProperty(){
       <div class="small muted" style="margin-top:8px">Rules from the ${SCHEME.name} to ${SCHEME.version} (${SCHEME.gazetted}).</div></div>
       ${gaps.length?callout('warn',`${gaps.length===1?'One control':gaps.length+' controls'} on this land ${gaps.length===1?'is':'are'} newer than the scheme version loaded`,`${gaps.join(' and ')} appear${gaps.length===1?'s':''} on Vicmap today, but ${gaps.length===1?'its schedule is':'their schedules are'} not in the ${SCHEME.version} export. The engine flags anything it can’t check rather than guessing.`):''}
       ${parts.some(x=>x.id==='p7')?callout('info','1 Adeline Street is a strata subdivision','Vicmap shows two units (Lot 1 and Lot 2 on SP23045) plus common property. The owners corporation may need to consent as well as the unit owners.'):''}
-      <div><div class="sub-h">Title</div>${parts.map(x=>`<div class="row small" style="margin-bottom:4px"><span class="badge b-ok">✓ Retrieved</span><span>${esc(x.spi.map(lotLabel).join(', '))}</span><span class="muted">— register search statement and title plan (simulated)</span></div>`).join('')}
-      ${p.covenant?callout('warn','A title shows a registered restrictive covenant (simulated)','We’ll ask whether your proposal would breach it — that changes whether it can be VicSmart, and what council can approve.'):''}</div>
     </div>${nav({})}</div>`;
 }
 // ── Location map: interactive Google Maps, with the Vicmap planning view as a second tab ──
@@ -1488,14 +1662,11 @@ document.addEventListener('securitypolicyviolation',e=>{ if(/google/.test(e.bloc
 function gmapsSrc(x){ const t=S.gmType==='k'?'k':'m'; return `https://maps.google.com/maps?q=${encodeURIComponent(x.addr)}&t=${t}&z=19&ie=UTF8&output=embed`; }
 function renderLocationMap(p){
   const parts=p.parts||[p]; const focus=parts.find(x=>x.id===S.mapFocus)||parts[0];
-  const tab=S.mapTab||'google';
-  const tabs=`<div class="map-tools"><div class="seg light" role="tablist">${[['google','Google Maps'],['planning','Zones & overlays']].map(([k,l])=>`<button type="button" role="tab" aria-selected="${tab===k}" class="${tab===k?'on':''}" onclick="S.mapTab='${k}';render()">${l}</button>`).join('')}</div>
-    <div class="row">${tab==='google'&&!GMAPS_BLOCKED?`<div class="seg light">${[['m','Map'],['k','Satellite']].map(([k,l])=>`<button type="button" class="${(S.gmType||'m')===k?'on':''}" onclick="S.gmType='${k}';render()">${l}</button>`).join('')}</div>`:''}</div></div>`;
+  const tools=`<div class="map-tools">${!GMAPS_BLOCKED?`<div class="seg light">${[['m','Map'],['k','Satellite']].map(([k,l])=>`<button type="button" class="${(S.gmType||'m')===k?'on':''}" onclick="S.gmType='${k}';render()">${l}</button>`).join('')}</div>`:'<div></div>'}</div>`;
   let body;
-  if(tab==='planning') body = renderMap({...p, parts:[focus]}, {});
-  else if(GMAPS_BLOCKED) body = `<div class="gmap-blocked"><b>The live Google map is switched off on this claude.ai page.</b><p>claude.ai does not allow pages it hosts to embed other websites, so the Google map can only run in the downloadable HTML file (opened in Chrome, Edge or Safari) or wherever Objective hosts the prototype. The zones &amp; overlays view below is drawn from Vicmap and works everywhere.</p></div>${renderMap({...p, parts:[focus]}, {})}`;
+  if(GMAPS_BLOCKED) body = `<div class="gmap-blocked"><b>The live Google map is switched off on this claude.ai page.</b><p>claude.ai does not allow pages it hosts to embed other websites, so the Google map can only run in the downloadable HTML file (opened in Chrome, Edge or Safari) or wherever Objective hosts the prototype. This view is drawn from Vicmap and works everywhere.</p></div>${renderMap({...p, parts:[focus]}, {})}`;
   else body = `<div class="gmap"><iframe title="Google map of ${esc(focus.addr)}" src="${gmapsSrc(focus)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`;
-  return `<div class="map">${tabs}${body}${parts.length>1?`<div class="small muted" style="margin-top:6px">Showing ${esc(focus.short)}. Use “Show on map” to switch address.</div>`:''}</div>`;
+  return `<div class="map">${tools}${body}${parts.length>1?`<div class="small muted" style="margin-top:6px">Showing ${esc(focus.short)}. Use “Show on map” to switch address.</div>`:''}</div>`;
 }
 function addSuggHtml(){
   const q=S.addQuery.trim().toLowerCase(); if(q.length<2) return '';
@@ -1503,8 +1674,9 @@ function addSuggHtml(){
   const cand=PROPERTIES.filter(x=>!S.propIds.includes(x.id) && (x.addr.toLowerCase().includes(q) || (lp && x.spi.some(sp=> lp.lot ? sp===lp.lot+'\\'+lp.plan : sp.endsWith('\\'+lp.plan))))).slice(0,6);
   return `<div class="sugg">${cand.map(x=>`<button onclick="addLand('${x.id}')"><span>${esc(x.addr)}<span class="small muted" style="display:block">${x.spi.map(lotLabel).join(', ')}</span></span><span class="muted small">${x.zone} · ${x.area} m²</span></button>`).join('')||'<div class="small muted" style="padding:12px 14px">No match among the addresses modelled in this demo.</div>'}</div>`;
 }
-function resetProject(){ S.aspects={}; S.f={}; S.docs={}; S.useChoice=null; S.useOther=''; S.bw=null; S.devOther=''; S.covenantBreach=null; S.covenantVary=false; S.mplCert=null; }
-function pickProp(id){ const p=PROPERTIES.find(x=>x.id===id); S.propIds=[id]; S.primaryId=id; S.query=''; S.addQuery=''; S.mapFocus=null; S.existing=p.existing; S.addingLand=false; resetProject(); render(); }
+function resetProject(){ S.aspects={}; S.f={}; S.docs={}; S.useChoice=null; S.useOther=''; S.bw=null; S.devOther=''; S.covAnswer=null; S.covenantBreach=null; S.covenantVary=false; S.titleScanned=false; S.titleScanning=false; S.titleDocName=null; S.mplCert=null;
+  S.useChangeAns=null; S.bwAns=null; S.proposalMode='doc'; S.proposalScanning=false; S.proposalExtract=null; S.proposalDocName=null; S.pathwayChoice=null; S.outcomeMoreOpen=false; }
+function pickProp(id){ const p=PROPERTIES.find(x=>x.id===id); S.propIds=[id]; S.primaryId=id; S.query=''; S.addQuery=''; S.mapFocus=null; S.existing=p.existing; S.existingMoreOpen=false; S.addingLand=false; resetProject(); render(); }
 function addLand(id){ if(S.propIds.includes(id)) return; const x=PROPERTIES.find(p=>p.id===id); S.propIds.push(id); S.addQuery=''; S.addingLand=false; S.docs={}; render(); toast(`${x.short} added`); }
 function removeLand(id){ S.propIds=S.propIds.filter(x=>x!==id); if(S.primaryId===id) S.primaryId=S.propIds[0]; if(S.mapFocus===id) S.mapFocus=null; render(); }
 function makePrimary(id){ S.primaryId=id; S.mapFocus=null; render(); const x=PROPERTIES.find(p=>p.id===id); toast(`${x.short} is now the primary address`); }
@@ -1526,73 +1698,179 @@ function useRowStatus(key){
   const pend=ev.conds.filter(c=>!c.auto).length;
   const sec = ev.spatialFail ? ev.e.f : ev.e.s;
   if(pend) return {grp:'cond',badge:`<span class="badge b-neutral">${sec===1?'No permit':'Permit'} if ${pend===1?'a condition is':pend+' conditions are'} met</span>`};
-  return sec===1?{grp:'s1',badge:'<span class="badge b-ok">No permit needed</span>'}:{grp:'s2',badge:'<span class="badge b-neutral">Permit required</span>'};
+  return sec===1?{grp:'s1',badge:'<span class="badge b-ok" title="Planning term: as of right">Allowed without a permit</span>'}:{grp:'s2',badge:'<span class="badge b-neutral">Permit required</span>'};
+}
+// ── Document extraction (simulated) — reuses a matching demo scenario so the extracted answers run cleanly through the engine ──
+function sampleProposalDoc(fname){
+  const p=prop(); if(!p) return;
+  S.proposalScanning=true; render();
+  setTimeout(()=>{
+    S.proposalScanning=false;
+    const pid = S.propIds.includes(S.primaryId)?S.primaryId:S.propIds[0];
+    const sc = SCENARIOS.find(s=>s.p===pid && !s.extra);
+    S.proposalDocName = fname || 'Planning-Report.pdf';
+    const curLbl = existingLabel(S.existing)||'—';
+    if(sc){
+      S.aspects={...sc.a}; S.f={...sc.f};
+      S.useChoice = sc.a.use ? sc.f.use_type : 'unchanged';
+      S.bw = Object.keys(sc.a).some(k=>k!=='use'&&k!=='park'&&sc.a[k]);
+      S.bwAns = S.bw ? 'yes' : 'no';
+      S.useChangeAns = sc.a.use ? 'yes' : 'no';
+      if(sc.cost) S.cost = sc.cost;
+      S.proposalExtract = {
+        curLbl, useChangeAns:S.useChangeAns,
+        useLabel: sc.a.use ? (USES[sc.f.use_type] ? USES[sc.f.use_type].label.replace(/ \(.*\)$/,'') : sc.f.use_type) : null,
+        bwAns:S.bwAns,
+        bwSummary: Object.keys(sc.a).filter(k=>k!=='use'&&k!=='park'&&sc.a[k]).map(k=>{ const d=DEV_OPTS.find(o=>o.k===k); return d?d.t:k; }),
+      };
+    } else {
+      S.useChoice='unchanged'; S.aspects.use=false; S.f.use_type=null; S.useChangeAns='no'; S.bwAns=null;
+      S.proposalExtract = {curLbl, useChangeAns:'no', useLabel:null, bwAns:null, bwSummary:[]};
+    }
+    render();
+    toast(sc ? 'Planning report checked' : 'Planning report checked — one thing needs your input');
+  },1300);
+}
+function replaceProposalDoc(){ S.proposalExtract=null; S.proposalDocName=null; S.proposalMode='doc'; render(); }
+function pickProposalFile(){ pendingPick='_proposal'; const inp=$('#fileInput'); inp.multiple=false; inp.value=''; inp.click(); }
+function proposalSummaryHtml(){
+  const e=S.proposalExtract; if(!e) return '';
+  const items=[
+    {y:true, t:`Current use of the land: ${e.curLbl}`},
+    {y:true, t: e.useChangeAns==='yes' ? `Proposed use: change to ${e.useLabel||'—'}` : 'Proposed use: unchanged'},
+  ];
+  if(e.bwAns==null) items.push({y:false, t:'Building or works: not found in this document — tell us below'});
+  else items.push({y:true, t: e.bwAns==='yes' ? `Building or works: ${e.bwSummary.length?e.bwSummary.join(', '):'as described'}` : 'Building or works: none proposed'});
+  return `<div class="panel-b">
+    <div class="req-ai" style="background:var(--sunk)"><b>Checked</b> <span class="muted">· ${esc(S.proposalDocName||'Planning-Report.pdf')}</span>
+      <ul>${items.map(i=>`<li class="${i.y?'y':'n'}" data-m="${i.y?'✓':'?'}">${esc(i.t)}</li>`).join('')}</ul></div>
+    <div class="row" style="margin-top:10px;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <span class="small muted">Check the details below and change anything that’s not right.</span>
+      <button class="btn sm ghost" onclick="replaceProposalDoc()">Replace document</button>
+    </div>
+  </div>`;
+}
+function proposalDocBody(){
+  const p=prop();
+  return `<div class="panel-b">
+    <div class="dropzone" id="pdz"><div><div style="font-weight:600;font-size:13px">Add your planning report</div><div class="small muted">Drop it here, or choose a file. We’ll read it and pull out the current use, the proposed use and any building or works — then you confirm what we found.</div></div>
+      <div class="row"><button class="btn" onclick="pickProposalFile()">Choose file</button><button class="btn primary" onclick="sampleProposalDoc()">Use a sample planning report</button></div></div>
+    ${S.proposalScanning?`<div class="scan" style="margin-top:10px"><span class="dots"><i></i><i></i><i></i></span> Reading the document and checking it against ${esc(p.short)}…</div>`:''}
+    <div class="small muted" style="margin-top:12px">Don’t have a planning report? <button class="btn sm ghost" onclick="S.proposalMode='manual';render()">Answer a few questions instead</button></div>
+  </div>`;
 }
 function viewProject(){
   const p=prop();
   const zoneTxt=(p.zones||[p.zone]).join('/');
-  // Use column
+  const curLbl = existingLabel(S.existing);
+  // Use section
   const rows=Object.keys(USES).map(k=>({k,...useRowStatus(k)}));
   const grp=(g,title)=>{ const list=rows.filter(r=>r.grp===g); if(!list.length) return ''; return `<div class="use-grp"><div class="sub-h">${title}</div>${list.map(r=>{ const on=S.useChoice===r.k; const dis=r.grp==='no' && !on;
-      return `<button class="uopt ${on?'on':''}" ${dis?'disabled aria-disabled="true"':''} onclick="setUse('${r.k}')"><span class="radio"></span><span class="ut">${esc(USES[r.k].label)}${r.grp==='no'?`<span class="uwhy">${esc(r.why)}</span>`:''}</span>${r.grp==='no'?'<span class="badge b-neutral">Not permitted</span>':r.badge||''}</button>${on?renderFollow('use'):''}`; }).join('')}</div>`; };
-  const useCol = `<div class="pick-col"><h3>Proposed use</h3><div class="muted">What the land will be used for once the project is finished</div>
-    <button class="uopt ${S.useChoice==='unchanged'?'on':''}" onclick="setUse('unchanged')"><span class="radio"></span><span class="ut"><b>Unchanged</b><span class="uwhy">The land keeps its current use (${esc((EXISTING.find(e=>e[0]===S.existing)||[])[1]||'—').toLowerCase()})</span></span></button>
-    ${grp('s1','No permit needed for the use')}${grp('s2','Permit required')}${grp('cond','Depends on a condition')}${grp('confirm','Council to confirm')}
-    <button class="uopt ${S.useChoice==='other'?'on':''}" onclick="setUse('other')"><span class="radio"></span><span class="ut"><b>Other</b><span class="uwhy">Describe it — council will classify it</span></span></button>
-    ${S.useChoice==='other'?`<div class="follow"><input class="input" id="useOther" placeholder="e.g. Pet grooming salon" value="${esc(S.useOther)}"></div>`:''}
-    ${grp('no',`Not permitted in ${zoneTxt}`)}
-    <div class="hr" style="margin:12px 0"></div>
-    <button class="opt ${S.aspects.park?'on':''}" aria-pressed="${!!S.aspects.park}" onclick="toggleAspect('park')"><span class="box">${S.aspects.park?'✓':''}</span><span><span class="ot">Provide fewer car spaces than the scheme requires</span><span class="od" style="display:block">A car parking reduction, often needed with a change of use</span></span></button>${S.aspects.park?renderFollow('park'):''}
-  </div>`;
-  // Building or works column
+      return `<button class="uopt ${on?'on':''}" ${dis?'disabled aria-disabled="true"':''} onclick="setUse('${r.k}')"><span class="radio"></span><span class="ut">${esc(USES[r.k].label)}<span class="pro-only badge b-neutral" style="margin-left:6px;font-weight:500" title="${esc(PPARS[USES[r.k].ppars]||'')} — PPARS reporting category (best-effort mapping, not yet validated against DTP's current data dictionary)">PPARS ${USES[r.k].ppars}</span>${r.grp==='no'?`<span class="uwhy">${esc(r.why)}</span>`:''}</span>${r.grp==='no'?'<span class="badge b-neutral">Not permitted</span>':(g==='s1'?'':(r.badge||''))}</button>${on?renderFollow('use'):''}`; }).join('')}</div>`; };
+  const ynRow=(field,val)=>`<div class="yn">${[['yes','Yes'],['no','No']].map(([v,l])=>`<button class="${val===v?'on':''}" onclick="${field}('${v}')">${l}</button>`).join('')}</div>`;
+  const useSection = `
+    <div class="q"><div class="ql">Are you planning to change the use of the land${curLbl?` from ${esc(curLbl.toLowerCase())}`:''}?</div>${ynRow('setUseChangeAns',S.useChangeAns)}</div>
+    ${S.useChangeAns==='yes' ? `<div style="margin-top:10px">
+      ${grp('s1','<span title="Planning term: as of right">Allowed without a permit</span>')}${grp('s2','Permit required')}${grp('cond','Depends on a condition')}${grp('confirm','Council to confirm')}
+      <button class="uopt ${S.useChoice==='other'?'on':''}" onclick="setUse('other')"><span class="radio"></span><span class="ut"><b>Other</b><span class="uwhy">Describe it — council will classify it</span></span></button>
+      ${S.useChoice==='other'?`<div class="follow"><input class="input" id="useOther" placeholder="e.g. Pet grooming salon" value="${esc(S.useOther)}"></div>`:''}
+      ${grp('no',`Not permitted in ${zoneTxt}`)}</div>` : ''}
+    <div class="hr" style="margin:14px 0"></div>
+    <button class="opt ${S.aspects.park?'on':''}" aria-pressed="${!!S.aspects.park}" onclick="toggleAspect('park')"><span class="box">${S.aspects.park?'✓':''}</span><span><span class="ot">Provide fewer car spaces than the scheme requires</span><span class="od" style="display:block">A car parking reduction, often needed with a change of use</span></span></button>${S.aspects.park?renderFollow('park'):''}`;
+  // Building or works section
   const avail=DEV_OPTS.map(o=>({o,why:devAvailability(o,p)}));
   avail.forEach(({o,why})=>{ if(why && S.aspects[o.k]) S.aspects[o.k]=false; });
   const shown=avail.filter(a=>!a.why), hidden=avail.filter(a=>a.why);
   const opt=(o)=>{ const on=!!S.aspects[o.k]; return `<button class="opt ${on?'on':''}" aria-pressed="${on}" onclick="toggleAspect('${o.k}')"><span class="box">${on?'✓':''}</span><span><span class="ot">${o.t}</span><span class="od" style="display:block">${o.d}</span></span></button>${on?renderFollow(o.k):''}`; };
-  const bwCol = `<div class="pick-col"><h3>Building or works</h3><div class="muted">Anything you construct, alter, demolish or remove</div>
-    <label class="bw-check"><input type="checkbox" id="bwCheck" ${S.bw?'checked':''} onchange="setBW(this.checked)"> <span><b>Any building or works?</b><span class="uwhy">Tick if the project involves construction, alterations, fences, demolition or tree removal</span></span></label>
-    ${S.bw?`${shown.map(a=>opt(a.o)).join('')}
+  const bwSection = `
+    <div class="q"><div class="ql">Are you planning any building or works as part of this project?</div>${ynRow('setBWAns',S.bwAns)}
+      <div class="small muted">Construction, alterations, fences, demolition or tree removal.</div></div>
+    ${S.bwAns==='yes' ? `<div style="margin-top:10px">${shown.map(a=>opt(a.o)).join('')}
       <button class="opt ${S.aspects.devOther?'on':''}" aria-pressed="${!!S.aspects.devOther}" onclick="toggleAspect('devOther')"><span class="box">${S.aspects.devOther?'✓':''}</span><span><span class="ot">Something else</span><span class="od" style="display:block">Describe it — council will confirm what applies</span></span></button>
       ${S.aspects.devOther?`<div class="follow"><input class="input" id="devOther" placeholder="e.g. Solar panels on a heritage-listed roof" value="${esc(S.devOther)}"></div>`:''}
-      ${hidden.length?`<div class="small muted" style="margin-top:6px">Not shown for this land: ${hidden.map(h=>`${h.o.t} — ${h.why.charAt(0).toLowerCase()+h.why.slice(1)}`).join('; ')}.</div>`:''}`:''}
-  </div>`;
-  const cov = p.covenant ? `<div class="panel-b" style="border-top:1px solid var(--border-light)"><div class="q"><div class="ql">A title shows a registered restrictive covenant (simulated). Would anything in your proposal breach it?</div>
-    <div class="yn">${[['no','No'],['yes','Yes'],['unsure','Not sure']].map(([v,l])=>`<button class="${S.covenantBreach===v?'on':''}" onclick="setCov('${v}')">${l}</button>`).join('')}</div></div>
-    ${S.covenantBreach==='unsure'?`<div style="margin-top:10px">${callout('info','Worth checking before you lodge','Single-dwelling covenants are common in Preston. Council must refuse a permit that would authorise a breach (s 61(4)). A lawyer or conveyancer can read the covenant for you. The prototype treats “not sure” as “no” for now.')}</div>`:''}
-    ${S.covenantBreach==='yes'?`<div style="margin-top:10px">${callout('bad','Council must refuse a permit that would authorise a breach of a registered covenant','P&E Act s 61(4). You can also apply to remove or vary the covenant in the same application. That rules out VicSmart and adds a requirement to identify every lot that benefits from the covenant.')}</div>
-      <label class="row small" style="margin-top:10px;cursor:pointer"><input type="checkbox" id="covVary" ${S.covenantVary?'checked':''} onchange="S.covenantVary=this.checked;render()"> Also apply to vary or remove the covenant</label>`:''}
-  </div>`:'';
-  return `<div class="panel">
-    <div class="panel-h"><div><div class="panel-t">What’s on the land now, and what do you want to do?</div><div class="panel-s">Describe the project in your own terms. We translate it into the planning scheme’s language.</div></div></div>
-    <div class="panel-b"><div class="q"><div class="ql">The land is currently used as</div><div class="yn">${EXISTING.map(([v,l])=>`<button class="${S.existing===v?'on':''}" onclick="setExisting('${v}')">${l}</button>`).join('')}</div>
+      ${hidden.length?`<div class="small muted" style="margin-top:6px">Not shown for this land: ${hidden.map(h=>`${h.o.t} — ${h.why.charAt(0).toLowerCase()+h.why.slice(1)}`).join('; ')}.</div>`:''}</div>` : ''}`;
+  const useDone = useSectionDone();
+  const moreVal = existingIsMore(S.existing) ? S.existing : null;
+  const moreBtnLabel = moreVal ? `Something else… (${esc(existingLabel(moreVal))})` : 'Something else';
+  const manualBody = `
+    <div class="panel-b"><div class="q"><div class="ql">The land is currently used as</div><div class="yn">${EXISTING.map(([v,l])=>`<button class="${S.existing===v?'on':''}" onclick="setExisting('${v}')">${l}</button>`).join('')}<span class="edrop-wrap"><button class="${moreVal?'on':''}" aria-haspopup="listbox" aria-expanded="${!!S.existingMoreOpen}" onclick="toggleExistingMore()">${moreBtnLabel}</button>${S.existingMoreOpen?`<div class="sugg edrop-menu" role="listbox">${EXISTING_MORE.map(([v,l])=>`<button type="button" role="option" aria-selected="${S.existing===v}" onclick="setExisting('${v}')"><span>${esc(l)}</span>${S.existing===v?'<span class="muted small">✓</span>':''}</button>`).join('')}</div>`:''}</span></div>
       <div class="small muted pro-only">Interim Regulations r 13(d) — the current use must be stated.</div></div></div>
     <div class="panel-b" style="border-top:1px solid var(--border-light)">
       <div class="filter-note"><span class="badge b-info">Filtered for this land</span><span>Only choices possible at <b>${esc(p.short)}</b> (${esc(zoneTxt)}) are listed. Uses the zone prohibits are greyed out. Where a zone condition depends on location, it’s been checked on the map.</span></div>
-      <div class="guided-only" style="margin:12px 0">${callout('info','Using land and building on it are separate questions in planning','A café in an existing shop might need no permit for the <b>use</b>, but a permit for the new shopfront (the <b>building or works</b>) and another for fewer car spaces. Choose everything that applies.')}</div>
-      <div class="pick-cols" style="margin-top:12px">${useCol}${bwCol}</div>
-    </div>${cov}
+      <div class="guided-only" style="margin:12px 0">${callout('info','Using land and building on it are separate questions in planning','A café in an existing shop might need no permit for the <b>use</b>, but a permit for the new shopfront (the <b>building or works</b>) and another for fewer car spaces. Answer both — one at a time, below.')}</div>
+      <div class="row" style="justify-content:space-between;align-items:center;margin-top:14px">
+        <div class="sub-h" style="margin:0">1 · Proposed use</div>
+        ${useDone ? `<span class="badge b-ok">Answered</span>` : ''}
+      </div>
+      ${useSection}
+      <div class="hr" style="margin:18px 0"></div>
+      <div class="sub-h">2 · Building or works</div>
+      ${useDone ? bwSection : `<div class="small muted" style="padding:8px 0">Answer proposed use above first — buildings and works will appear here once you have.</div>`}
+      <div class="hr" style="margin:18px 0"></div>
+      <div class="sub-h">3 · Title covenant</div>
+      ${useDone ? covenantSection() : `<div class="small muted" style="padding:8px 0">Answer the questions above first.</div>`}
+    </div>`;
+  return `<div class="panel">
+    <div class="panel-h"><div><div class="panel-t">Your proposal</div><div class="panel-s">Add a planning report and we’ll fill this in for you — or tell us below. We translate it into the planning scheme’s language.</div></div></div>
+    ${S.proposalExtract ? proposalSummaryHtml() : (S.proposalMode!=='manual' ? proposalDocBody() : '')}
+    ${(S.proposalMode==='manual' && !S.proposalExtract) ? `<div class="panel-b" style="padding-bottom:4px;border-top:1px solid var(--border-light)"><button class="btn sm ghost" onclick="S.proposalMode='doc';render()">↑ Have a planning report instead? Add it</button></div>` : ''}
+    ${(S.proposalExtract || S.proposalMode==='manual') ? manualBody : ''}
     ${nav({disabled:!projectComplete(), label:'Check what I need', extra:`<button class="btn" onclick="openHelp()">Don’t see what you are looking for?</button>`})}</div>`;
 }
+const BW_ASPECT_KEYS = new Set([...DEV_OPTS.map(o=>o.k), 'devOther']);
 function renderFollow(k){
   const qs=followUps(k); if(!qs.length) return '';
+  const schemeNote = BW_ASPECT_KEYS.has(k) ? `<div class="small muted" style="margin-top:8px">${schemeLink('View the '+esc(COUNCIL_SETTINGS.schemeName),'clink')} for the full rules that apply to building and works on this land.</div>` : '';
   return `<div class="follow">${qs.map(q=>{
     const v=S.f[q.id];
     if(q.type==='spatial') return `<div class="q spatial-q"><div class="ql"><span class="badge b-info" style="margin-right:6px">Spatial check</span>${esc(q.label)}</div>
-      <div class="row small"><span class="badge ${q.value?'b-ok':'b-warn'}">${q.value?'Yes':'No'}</span><span>${esc(q.detail)}</span></div>
+      <div class="row small"><span class="badge ${q.value==null?'b-neutral':q.value?'b-ok':'b-warn'}">${q.value==null?'Unknown':q.value?'Yes':'No'}</span><span>${esc(q.detail)}</span></div>
       ${q.override?`<label class="row small" style="cursor:pointer"><input type="checkbox" ${S.f.uc_trz_row==='yes'?'checked':''} onchange="setF('uc_trz_row',this.checked?'yes':'')"> The land has access to that road another way (e.g. a laneway or right of way)</label>`:''}</div>`;
     let ctl='';
     if(q.type==='yn') ctl=`<div class="yn">${[['yes','Yes'],['no','No'],...(q.unsure?[['unsure','Not sure']]:[])].map(([a,l])=>`<button class="${v===a?'on':''}" onclick="setF('${q.id}','${a}')">${l}</button>`).join('')}</div>`;
     if(q.type==='pick') ctl=`<div class="yn">${q.opts.map(([a,l])=>`<button class="${v===a?'on':''}" onclick="setF('${q.id}','${a}')">${l}</button>`).join('')}</div>`;
-    return `<div class="q"><div class="ql">${q.cond?'<span class="badge b-neutral" style="margin-right:6px">Zone condition</span>':''}${esc(q.label)}</div>${ctl}${q.help?`<div class="small muted">${esc(q.help)}</div>`:''}${v==='unsure'?`<div class="small" style="color:var(--warning-text)">We’ll assume the answer that needs more checking, and say so in the result.</div>`:''}</div>`;
-  }).join('')}</div>`;
+    return `<div class="q"><div class="ql">${q.cond?'<span class="badge b-neutral" style="margin-right:6px">Zone condition</span>':''}${esc(q.label)}</div>${ctl}${q.helpHtml?`<div class="small muted">${q.helpHtml}</div>`:(q.help?`<div class="small muted">${esc(q.help)}</div>`:'')}${v==='unsure'?`<div class="small" style="color:var(--warning-text)">We’ll assume the answer that needs more checking, and say so in the result.</div>`:''}</div>`;
+  }).join('')}${schemeNote}</div>`;
 }
 function toggleAspect(k){ S.aspects[k]=!S.aspects[k]; render(); }
 function setF(id,v){ S.f[id]=v; render(); }
 function setUse(k){ if(S.useChoice!==k) Object.keys(S.f).forEach(x=>{ if(x.startsWith('uc_')) delete S.f[x]; });
   S.useChoice=k; S.aspects.use = k!=='unchanged'; S.f.use_type = (k==='unchanged'||k==='other')?null:k; render(); }
 function setBW(on){ S.bw=on; if(!on){ DEV_OPTS.forEach(o=>S.aspects[o.k]=false); S.aspects.devOther=false; } render(); }
-function setExisting(v){ S.existing=v; render(); }
+function setExisting(v){ S.existing=v; S.existingMoreOpen=false; render(); }
+function toggleExistingMore(){ S.existingMoreOpen=!S.existingMoreOpen; render(); }
+function setUseChangeAns(v){ S.useChangeAns=v; if(v==='no'){ setUse('unchanged'); return; } if(S.useChoice==='unchanged'){ S.useChoice=null; S.aspects.use=false; S.f.use_type=null; } render(); }
+function setBWAns(v){ S.bwAns=v; setBW(v==='yes'); }
 function setCov(v){ S.covenantBreach=v; if(v!=='yes') S.covenantVary=false; render(); }
+function setCovAnswer(v){ S.covAnswer=v; if(v==='no'){ S.titleScanned=false; S.titleScanning=false; S.titleDocName=null; S.covenantBreach=null; S.covenantVary=false; } render(); }
+function covenantSection(){
+  const p=prop();
+  const q=`<div class="q"><div class="ql">Does the title for this property carry a registered covenant that could affect this proposal?</div>
+    <div class="small muted" style="margin:2px 0 8px">We can’t tell this from the address alone — it only shows up on the certificate of title. Answer with what you know; we’ll check the document if you have it.</div>
+    <div class="yn">${[['no','No'],['yes','Yes'],['unsure','Not sure']].map(([v,l])=>`<button class="${S.covAnswer===v?'on':''}" onclick="setCovAnswer('${v}')">${l}</button>`).join('')}</div></div>`;
+  if(!S.covAnswer) return q;
+  if(S.covAnswer==='no') return q+`<div class="small muted" style="margin-top:2px">We’ll still ask for a copy of title in Documents, for council’s records — it won’t change your permit pathway unless that turns out to be wrong.</div>`;
+  let body;
+  if(!S.titleScanned){
+    body = `<div class="panel" style="margin-top:10px"><div class="panel-h"><div><div class="panel-t">Certificate of title</div><div class="panel-s">Add the title (and the covenants page, if any) and we’ll check it for a registered restrictive covenant.</div></div></div>
+      <div class="panel-b"><div class="dropzone" id="tdz"><div><div style="font-weight:600;font-size:13px">Add the certificate of title</div><div class="small muted">Drop it here, or choose a file.</div></div>
+        <div class="row"><button class="btn" onclick="pickFile('_title')">Choose file</button><button class="btn primary" onclick="sampleTitle()">Use a sample certificate of title</button></div></div>
+      ${S.titleScanning?`<div class="scan" style="margin-top:10px"><span class="dots"><i></i><i></i><i></i></span> Checking the title for a registered restrictive covenant…</div>`:''}</div></div>`;
+  } else if(!p.covenant){
+    body = `<div style="margin-top:10px">${callout('ok','No registered restrictive covenant was found on the title (simulated)',`Checked · ${esc(S.titleDocName||'Title-and-covenant.pdf')}. Nothing here affects your permit pathway.`)}</div>`;
+  } else {
+    body = `<div class="panel" style="margin-top:10px"><div class="panel-h"><div><div class="panel-t">Certificate of title</div><div class="panel-s">Checked · ${esc(S.titleDocName||'Title-and-covenant.pdf')}</div></div></div>
+      <div class="panel-b stack">
+        ${callout('warn','A registered restrictive covenant was found on the title (simulated)','We’ll ask whether your proposal would breach it — that changes whether it can be VicSmart, and what council can approve.')}
+        <div class="q"><div class="ql">Would anything in your proposal breach it?</div>
+          <div class="yn">${[['no','No'],['yes','Yes'],['unsure','Not sure']].map(([v,l])=>`<button class="${S.covenantBreach===v?'on':''}" onclick="setCov('${v}')">${l}</button>`).join('')}</div></div>
+        ${S.covenantBreach==='unsure'?callout('info','Worth checking before you lodge','Single-dwelling covenants are common in Preston. Council must refuse a permit that would authorise a breach (s 61(4)). A lawyer or conveyancer can read the covenant for you. The prototype treats “not sure” as “no” for now.'):''}
+        ${S.covenantBreach==='yes'?`${callout('bad','Council must refuse a permit that would authorise a breach of a registered covenant','P&E Act s 61(4). You can also apply to remove or vary the covenant in the same application. That rules out VicSmart and adds a requirement to identify every lot that benefits from the covenant.')}
+          <label class="row small" style="cursor:pointer"><input type="checkbox" id="covVary" ${S.covenantVary?'checked':''} onchange="S.covenantVary=this.checked;render()"> Also apply to vary or remove the covenant</label>`:''}
+      </div></div>`;
+  }
+  return q+body;
+}
 function openHelp(){
   const p=prop();
   $('#overlay').innerHTML=`<div class="modal-wrap" onclick="if(event.target===this)closeOverlay()"><form class="modal" id="helpForm" role="dialog" aria-modal="true" aria-labelledby="helpT">
@@ -1609,6 +1887,16 @@ function openHelp(){
     if(!f||!l||!/^\S+@\S+\.\S+$/.test(m)||!a){ $('#hf_err').textContent='Please fill in every field with a valid email address.'; return; }
     $('#helpForm').innerHTML=`<h2 style="font-size:17px">Thanks, ${esc(f)}</h2><p class="small" style="color:var(--ink-med);margin:8px 0 14px">Your request about <b>${esc(a)}</b> has been recorded. A Darebin planner will contact you at ${esc(m)} to talk it through. <span class="muted">(Simulated — nothing is sent in this demo.)</span></p><div class="row" style="justify-content:flex-end"><button type="button" class="btn primary" onclick="closeOverlay()">Close</button></div>`; };
   setTimeout(()=>$('#hf_first')?.focus(),30);
+}
+
+function openPrivacy(){
+  $('#overlay').innerHTML=`<div class="modal-wrap" onclick="if(event.target===this)closeOverlay()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="privT">
+    <div class="row" style="justify-content:space-between"><h2 id="privT" style="font-size:17px">How we handle your information</h2><button type="button" class="btn sm ghost" onclick="closeOverlay()">✕</button></div>
+    <p class="small" style="color:var(--ink-med);margin:6px 0 10px">Planning applications are public documents. What you enter here — the property, your proposal, and any documents you attach — becomes part of the public planning register once lodged, and can be viewed by anyone under the Planning and Environment Act 1987.</p>
+    <p class="small" style="color:var(--ink-med);margin:0 0 10px">Council collects your name and contact details to process the application and to meet notice requirements (s 52). It's handled under Darebin's privacy policy and the Victorian Privacy and Data Protection Act 2014.</p>
+    <p class="small muted" style="margin:0">Most Victorian council application forms don't surface this up front beyond a standard owner-consent line — we're showing it early as good practice, following planning practice note guidance on privacy disclosure. <span class="pro-only">Not yet resolved: whether this should gate progress (an explicit consent tick) or stay informational, as here.</span></p>
+    <div class="row" style="justify-content:flex-end;margin-top:14px"><button type="button" class="btn primary" onclick="closeOverlay()">Got it</button></div>
+  </div></div>`;
 }
 
 // ── Step 2: Outcome ──────────────────────────────────────────────
@@ -1635,39 +1923,92 @@ function facts(){
   return `<div class="facts">${F.map(([b,s])=>`<div class="fact"><b>${b}</b><span>${s}</span></div>`).join('')}</div>`;
 }
 function trigRow(t,kind,idx){
-  const key=kind+idx; const open=S.openTrig[key] ?? (S.persona==='pro');
-  const colour={need:'var(--ink)',no:'var(--positive)',gap:'var(--warning)',stop:'var(--negative)'}[kind];
+  const key=kind+idx; const open=S.openTrig[key] ?? false;
+  const chip={need:['chip-need','Permit required'],no:['chip-no','No permit required'],gap:['chip-gap','Can’t confirm yet'],stop:['chip-stop','Prohibited']}[kind];
   const cl = (t.clk && CL[t.clk]) || (t.clause && CL[t.clause]);
-  const vsCl = t.vs && CL[t.vs.cls==='59.07'?'VS-HO':t.vs.cls] ;
   let body='';
   if(t.why) body+=`<div>${esc(t.why)}</div>`;
   if(t.note) body+=`<div class="small muted">${esc(t.note)}</div>`;
-  if(cl) body+=`<div class="verbatim"><span class="src">${esc(t.clause)} · ${esc(cl.t)} · ${cl.a}</span>${esc(cl.x)}</div>`;
+  if(cl) body+=`<div class="verbatim"><span class="src">${schemeLink(esc(t.clause),'clink')} · ${esc(cl.t)} · ${cl.a}</span>${esc(cl.x)}</div>`;
   if(t.vs) body+=`<div style="margin-top:8px" class="row"><span class="badge b-info">VicSmart class · ${esc(t.vs.cls.startsWith('VS')?'zone class':'Clause '+t.vs.cls)}</span>${t.vs.std!==undefined?(t.vs.std==='yes'?'<span class="badge b-ok">Standards confirmed met</span>':'<span class="badge b-warn">Standards not confirmed</span>'):''}</div>`;
-  if(vsCl && S.persona==='pro') body+=`<div class="verbatim"><span class="src">${esc(vsCl.t)}</span>${esc(vsCl.x)}</div>`;
   if(t.exempt) body+=`<div class="small" style="margin-top:6px"><span class="badge b-neutral">${t.exempt==='full'?'Exempt from notice and review':'Exempt from third-party review'}</span></div>`;
-  if(t.referral) body+=`<div class="small" style="margin-top:6px"><span class="badge b-warn">Referral · ${esc(t.referral)}</span> <span class="muted">44.04-7</span></div>`;
-  return `<div class="trig"><button class="trig-h" aria-expanded="${open}" onclick="S.openTrig['${key}']=${!open};render()"><span class="trig-dot" style="background:${colour}"></span><span class="trig-t">${esc(t.label)}<small>${esc(CONTROL_NAMES[t.control]||t.control)}</small></span><span class="row">${t.clause&&t.clause!=='—'?clauseChip(t.clause):''}<span class="muted">${open?'▾':'▸'}</span></span></button>${open&&body?`<div class="trig-b">${body}</div>`:''}</div>`;
+  if(t.referral) body+=`<div class="small" style="margin-top:6px"><span class="badge b-warn">Referral · ${esc(t.referral)}</span> ${schemeLink('44.04-7','clink muted')}</div>`;
+  return `<div class="trig"><button class="trig-h" aria-expanded="${open}" onclick="S.openTrig['${key}']=${!open};render()">
+    <span class="trig-t">${esc(t.label)}<small>${esc(CONTROL_NAMES[t.control]||t.control)}</small></span>
+    <span class="row">${t.clause&&t.clause!=='—'?clauseChip(t.clause):''}<span class="badge ${chip[0]}">${chip[1]}</span><span class="small muted see-details">${open?'Hide details':'See details'}</span></span>
+    </button>${open&&body?`<div class="trig-b">${body}</div>`:''}</div>`;
+}
+function pathwayCard(sel,available,isMin,label,desc,reasons,key,days){
+  const clickable = available && !sel;
+  const cls = `path-card ${sel?'sel':''} ${available?'avail':'unavail'}`;
+  const attrs = clickable ? ` role="button" tabindex="0" onclick="choosePathway('${key}')" onkeydown="if(event.key==='Enter')choosePathway('${key}')"` : '';
+  let badge;
+  if(sel) badge = `<div class="small" style="margin-top:8px"><span class="badge b-ok">${isMin?'Applies to this application':'Chosen — more than the minimum required'}</span></div>`;
+  else if(available) badge = `<div class="small" style="margin-top:8px"><span class="badge b-neutral">Also available — tap to choose</span></div>`;
+  else badge = `<div class="small" style="margin-top:8px"><span class="badge b-neutral">Not available</span></div>${reasons&&reasons.length?`<details class="path-why"><summary>Why not</summary><ul>${reasons.map(w=>'<li>'+esc(w)+'</li>').join('')}</ul></details>`:''}`;
+  const daysBlock = days ? `<div class="fact" style="margin-top:8px;padding:8px 10px"><b>Decision</b><span>${esc(days)}</span></div>` : '';
+  return `<div class="${cls}"${attrs}><div class="path-h"><span class="path-dot">${sel?'✓':''}</span><span class="path-t">${esc(label)}</span></div>${daysBlock}<div class="path-d">${desc}</div>${badge}</div>`;
+}
+function choosePathway(k){ S.pathwayChoice = S.regime==='r2027' ? Number(k) : k; render(); }
+function applyPathwayChoice(){
+  const is27=S.regime==='r2027';
+  if(is27){
+    R.minType = R.type;
+    if(R.type){ const c=S.pathwayChoice; if(typeof c==='number' && c>=R.type && c<=3 && c!==R.type){
+      R.type=c; R.status = c===1?'vicsmart':'standard';
+      R.typeWhy = `You chose to apply as the fuller Type ${c}, rather than the minimum Type ${R.minType} this application qualifies for.`;
+      R.requirements = buildRequirements(R, S.regime);
+    } }
+  } else if(['vicsmart','standard'].includes(R.status)){
+    R.minStatus = R.status;
+    const order={vicsmart:1,standard:2}; const c=S.pathwayChoice;
+    if(typeof c==='string' && order[c]!=null && order[c]>=order[R.status] && c!==R.status){
+      R.status=c; R.requirements = buildRequirements(R, S.regime);
+    }
+  }
+}
+function pathwayChoices(){
+  const is27=S.regime==='r2027';
+  if(is27){
+    if(!R.minType) return '';
+    const opts=[
+      {k:1,label:'Type 1',days:'Set by the new regulations (not yet made)',desc:'The fastest track. No public notice; no referral authorities. A late decision is a deemed permit.',reasons:R.t1Why},
+      {k:2,label:'Type 2',days:'Set by the new regulations (not yet made)',desc:'A middle track. Notice only in specified categories, so neighbours can comment but not object or appeal; no referral authorities.',reasons:R.t2Why},
+      {k:3,label:'Type 3',days:'Set by the new regulations (not yet made)',desc:'The fullest track. Public notice and referral authorities where one applies; a full assessment.',reasons:[]},
+    ];
+    const overridden = R.type!==R.minType;
+    return `<div class="path-row">${opts.map(o=>pathwayCard(R.type===o.k, o.k>=R.minType, o.k===R.minType, o.label,o.desc,o.reasons,o.k,o.days)).join('')}</div>${overridden?`<button class="btn sm ghost" style="margin-top:8px" onclick="S.pathwayChoice=null;render()">Reset to the minimum required (Type ${R.minType})</button>`:''}`;
+  }
+  if(!['vicsmart','standard'].includes(R.status)) return '';
+  const order={vicsmart:1,standard:2};
+  const opts=[
+    {k:'vicsmart',label:'VicSmart',days:'10 business days',desc:'The fastest track. No public notice, and no third-party objections or appeals.',reasons:R.vsWhyNot},
+    {k:'standard',label:'Standard application',days:'60 statutory days',desc:'The fuller track. May be advertised to neighbours, who can object; the clock pauses while further information is outstanding.',reasons:[]},
+  ];
+  const overridden = R.status!==R.minStatus;
+  return `<div class="path-row">${opts.map(o=>pathwayCard(R.status===o.k, order[o.k]>=order[R.minStatus], o.k===R.minStatus, o.label,o.desc,o.reasons,o.k,o.days)).join('')}</div>${overridden?`<button class="btn sm ghost" style="margin-top:8px" onclick="S.pathwayChoice=null;render()">Reset to the minimum required (${R.minStatus==='vicsmart'?'VicSmart':'Standard'})</button>`:''}`;
 }
 function viewOutcome(){
   const v=verdict(), is27=S.regime==='r2027';
-  const grp=(title,list,kind)=> list.length?`<div><div class="sub-h">${title} · ${list.length}</div><div class="stack" style="gap:6px">${list.map((t,i)=>trigRow(t,kind,i)).join('')}</div></div>`:'';
-  const vsNote = (!is27 && R.status==='standard' && R.triggers.some(t=>t.vs)) ? `<div>${callout('info','Why this isn’t VicSmart','An application is VicSmart only if <b>every</b> permit trigger is a VicSmart class, the listed standards are met, and nothing breaches a covenant (Clause 71.06-1).<ul style="margin:6px 0 0;padding-left:18px">'+R.vsWhyNot.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul>')}</div>`:'';
+  const rows=[...R.prohibited.map(t=>({t,kind:'stop'})),...R.triggers.map(t=>({t,kind:'need'})),...R.gaps.map(t=>({t,kind:'gap'})),...R.noPermit.map(t=>({t,kind:'no'}))];
+  const byKind={}; const sectionRows = rows.map(r=>{ byKind[r.kind]=(byKind[r.kind]||0); const i=byKind[r.kind]++; return trigRow(r.t,r.kind,i); }).join('');
+  const dcpoInfo = R.info.filter(i=>i.control==='DCPO1');
+  const otherInfo = R.info.filter(i=>i.control!=='DCPO1');
+  const moreLabel = rows.length ? ` · ${rows.length} planning scheme section${rows.length===1?'':'s'} checked` : '';
+  const sections = (rows.length||dcpoInfo.length) ? `<div><button type="button" class="btn sm ghost" aria-expanded="${!!S.outcomeMoreOpen}" onclick="S.outcomeMoreOpen=${!S.outcomeMoreOpen};render()">${S.outcomeMoreOpen?'▾ Hide details':'▸ More details'}${moreLabel}</button>
+    ${S.outcomeMoreOpen?`<div style="margin-top:10px">${rows.length?`<div class="sub-h">Planning scheme sections checked for this application · ${rows.length}</div><div class="stack" style="gap:6px">${sectionRows}</div>`:''}${dcpoInfo.length?`<div class="stack" style="gap:6px;margin-top:${rows.length?'10px':'0'}">${dcpoInfo.map(i=>callout('info',esc(i.control),esc(i.label))).join('')}</div>`:''}</div>`:''}</div>` : '';
+  const vsNote = (!is27 && R.status==='standard' && R.minStatus!=='vicsmart' && R.triggers.some(t=>t.vs)) ? `<div>${callout('info','Why this isn’t VicSmart','An application is VicSmart only if <b>every</b> permit trigger is a VicSmart class, the listed standards are met, and nothing breaches a covenant (Clause 71.06-1).<ul style="margin:6px 0 0;padding-left:18px">'+R.vsWhyNot.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul>')}</div>`:'';
   const inversion = (R.status==='vicsmart' && R.triggers.some(t=>t.vs?.cls==='59.07')) ? callout('warn','Fast track doesn’t mean fewer documents','The ordinary heritage pathway in Darebin has no scheme application requirements at all. The VicSmart heritage class (59.07-1) asks for title, plans, a heritage impact description, colours and materials, and two sets of photographs, all at lodgement. That’s the trade: more up front for a 10-day decision.') : '';
   const reform = is27 && !['none','prohibited'].includes(R.status) ? callout('reform','How the type was worked out', `${esc(R.typeWhy)} The new Act says an application must state its type (new s 47(1)(ba)). The applicant doesn’t have to classify it themselves — the system proposes it, and council can change it with written reasons, generally within 5 business days (new s 49B). ${R.type!==3?'The mapping from VicSmart and exemptions to types is an assumption until the regulations are made.':''}`) : '';
-  const lower = is27 && R.type && R.type>1 ? callout('reform',R.type===3?'Why this isn’t Type 1 or Type 2':'Why this isn’t Type 1',`<b>Type 1</b> needs every trigger to be a VicSmart class:<ul style="margin:4px 0 6px;padding-left:18px">${R.t1Why.map(w=>'<li>'+esc(w)+'</li>').join('')}</ul>${R.type===3?`<b>Type 2</b> needs every trigger to be exempt from notice or review, with no referral:<ul style="margin:4px 0 0;padding-left:18px">${R.t2Why.map(w=>'<li>'+esc(w)+'</li>').join('')}</ul>`:''}`) : '';
-  const info = R.info.map(i=>callout('info',esc(i.control),esc(i.label))).join('');
+  const info = otherInfo.map(i=>callout('info',esc(i.control),esc(i.label))).join('');
   let actions='';
   if(R.status==='none') actions=nav({next:false,extra:`<button class="btn" onclick="toast('Saved. A record of this check is in My applications.')">Save a record of this check</button><button class="btn primary" onclick="goStep(1)">Change my project</button>`});
   else if(R.status==='prohibited') actions=nav({next:false,extra:`<button class="btn primary" onclick="goStep(1)">Change my project</button>`});
   else actions=nav({label:'See what council needs'});
   return `<div class="panel"><div class="panel-b stack">
     <div class="verdict ${v.c}"><div class="vi">${v.i}</div><div><div class="vt">${v.t} ${is27&&R.type&&R.type!==3?reformBadge():''}</div><div class="vs">${v.s}</div></div></div>
-    ${facts()}${reform}${lower}${inversion}${vsNote}
-    ${grp('Prohibited',R.prohibited,'stop')}
-    ${grp('Needs a permit',R.triggers,'need')}
-    ${grp('Can’t be checked against the loaded scheme',R.gaps,'gap')}
-    ${grp('Checked — no permit needed',R.noPermit,'no')}
+    ${facts()}${pathwayChoices()}${reform}${inversion}${vsNote}
+    ${sections}
     ${info}
     <div class="small muted pro-only">Where one proposal triggers several clauses, they are assessed together as one application${is27?' — required from 2027 by new s 58(2)':''}.</div>
   </div>${actions}</div>`;
@@ -1680,8 +2021,8 @@ function reqRow(r, layer){
   const stateCls = layer===1 ? (r.ok?'ok':'') : cls;
   const meta = [];
   if(layer===1){ meta.push(clauseChip(r.cite)); if(r.ok) meta.push('<span class="badge b-neutral">'+(r.tier==='hard'?'Required to lodge':'Incomplete notice if missing')+'</span>'); else if(r.tier==='hard') meta.push('<span class="badge b-bad">Must have to lodge</span>'); else meta.push('<span class="badge b-warn">Incomplete notice if missing</span>'); if(r.reform) meta.push(reformBadge('New from 2027')); }
-  if(layer===2){ meta.push(clauseChip(r.cl)); if(r.w) meta.push('<span class="badge b-neutral">Council can waive</span>'); if(r.confirm) meta.push('<span class="badge b-warn" title="The zone VicSmart class names Clause 54/55 as its provision; this demo applies 32.08-12 and 54.01/55.01 — confirm with DTP">Confirm source</span>'); }
-  if(layer===3){ meta.push(`<span class="badge b-neutral">${esc(r.src||'Darebin — illustrative')}</span>`); }
+  if(layer===2){ meta.push(clauseChip(r.cl)); meta.push(r.w?'<span class="badge b-warn">Recommended — council can waive</span>':'<span class="badge b-bad">Mandatory</span>'); if(r.confirm) meta.push('<span class="badge b-warn" title="The zone VicSmart class names Clause 54/55 as its provision; this demo applies 32.08-12 and 54.01/55.01 — confirm with DTP">Confirm source</span>'); }
+  if(layer===3){ meta.push('<span class="badge b-warn">Recommended</span>'); meta.push(`<span class="badge b-neutral">${esc(r.src||'Darebin — illustrative')}</span>`); }
   let ai='';
   if(d.findings){ ai=`<div class="req-ai"><b>${d.state==='part'?'Checked — something is missing':'Checked'}</b> <span class="muted">· ${esc(d.name)}</span><ul>${d.findings.map(f=>`<li class="${f.m}" data-m="${f.m==='y'?'✓':'✕'}">${esc(f.t)}</li>`).join('')}</ul></div>`; }
   let act='';
@@ -1690,23 +2031,41 @@ function reqRow(r, layer){
   else act = `<button class="btn sm" onclick="pickFile('${r.id}')">${d.state==='ok'||d.state==='part'?'Replace':'Upload'}</button>${d.state!=='ok'?`<button class="btn sm ghost" onclick="toggleSkip('${r.id}')">${d.state==='skip'?'Undo':'Not providing'}</button>`:''}`;
   return `<div class="req ${stateCls}"><span class="st">${stateCls==='ok'?'✓':stateCls==='part'?'!':''}</span><div><div class="req-t">${esc(r.t)}</div>${r.d?`<div class="req-d">${esc(r.d)}</div>`:''}<div class="req-m">${meta.join('')}</div>${ai}</div><div class="req-act">${act}</div></div>`;
 }
+function docCounts(){
+  const q=R.requirements||{L2:[],L3:[]};
+  const mandMissing = q.L2.filter(r=>!r.w && !r.ok).length;
+  const recMissing = q.L2.filter(r=>r.w && !r.ok).length + q.L3.filter(r=>!r.ok).length;
+  return {mandMissing,recMissing};
+}
+function docsGateOk(){ return docCounts().mandMissing===0; }
+function docsBanner(){
+  const {mandMissing,recMissing}=docCounts();
+  if(!mandMissing && !recMissing) return callout('ok','Everything required has been provided','Every mandatory and recommended item is accounted for.');
+  const bits=[];
+  if(mandMissing) bits.push(`${mandMissing} mandatory document${mandMissing===1?'':'s'} not yet provided`);
+  if(recMissing) bits.push(`${recMissing} recommended document${recMissing===1?'':'s'} not yet provided`);
+  return callout(mandMissing?'bad':'warn','Before you continue', `${bits.join(' · ')}. The application cannot be submitted without all mandatory documents provided.`);
+}
+function sampleTitle(fname){
+  S.titleScanning=true; render();
+  setTimeout(()=>{ S.titleScanning=false; S.titleScanned=true; S.titleDocName=fname||'Title-and-covenant.pdf'; render(); toast('Certificate of title checked'); },1100);
+}
 function viewDocs(){
   const q=R.requirements, is27=S.regime==='r2027';
   const L2empty = !q.L2.length;
   const hoNone = R.triggers.some(t=>/^HO/.test(t.control)) && L2empty;
   const vs = R.status==='vicsmart';
   return `<div class="stack">
+    ${docsBanner()}
     <div class="dropzone" id="dz"><div><div style="font-weight:600;font-size:13px">Add your documents</div><div class="small muted">Drop plans and reports here. Each file is read, matched to a requirement and checked for what it must show.</div></div>
       <div class="row"><button class="btn" onclick="pickFile('_bulk')">Choose files</button><button class="btn primary" onclick="sampleDocs()">Add sample documents</button></div></div>
     ${S.scanning?`<div class="scan"><span class="dots"><i></i><i></i><i></i></span> Reading documents and checking them against the requirements…</div>`:''}
     ${is27?`<div>${callout('reform','Traditional owner notice (new s 48AA)',`Where land is in a specified area and the application is in a specified class, you must notify the registered Aboriginal party before applying, then lodge the notice and any reply. The areas and classes aren’t specified yet (assumption A5).`)}<label class="row small" style="margin-top:8px;cursor:pointer"><input type="checkbox" id="toArea" ${S.toArea?'checked':''} onchange="S.toArea=this.checked;render()"> Demo: treat this land as a specified area</label></div>`:''}
-    <div class="layer"><div class="layer-h"><span class="layer-tag lt1">LAYER 1</span><div><div class="layer-t">What the law requires of every application</div><div class="layer-s">Set by the P&amp;E Act and ${is27?'the replacement regulations':'the Interim Regulations 2026'}. The same for every council. Most of it comes from your answers.</div></div></div>
-      ${q.L1.map(r=>reqRow(r,1)).join('')}</div>
-    <div class="layer"><div class="layer-h"><span class="layer-tag lt2">LAYER 2</span><div><div class="layer-t">What the ${SCHEME.name} requires for this application</div><div class="layer-s">${vs?'A VicSmart application is accompanied only by its class’s information requirements — they replace the zone and overlay requirements (Clause 71.06-2).':'Built from every clause this proposal triggers. Missing items can lead to an incomplete-application notice, though council can waive most of them.'}</div></div></div>
-      ${L2empty?`<div class="panel-b">${callout(hoNone?'warn':'ok', hoNone?'The scheme requires no documents for this heritage application':'No scheme documents required', hoNone?'The Heritage Overlay leaves application requirements to its schedule, and Darebin’s schedule says “None specified”. Everything a heritage adviser needs comes through a further information request unless you provide it now. Layer 3 is where that shows up.':'The triggered clauses carry no application requirements of their own.')}</div>`:q.L2.map(r=>reqRow(r,2)).join('')}</div>
-    <div class="layer"><div class="layer-h"><span class="layer-tag lt3">LAYER 3</span><div><div class="layer-t">What Darebin usually asks for</div><div class="layer-s">Not a legal requirement at lodgement. Leaving these out is the most common reason for a request for further information (${vs?'within 5 business days for VicSmart':'within 28 days'}, with at least 30 days to respond). <b>Illustrative — Darebin would configure this list.</b></div></div></div>
+    <div class="layer"><div class="layer-h"><div><div class="layer-t">The following information is required as part of your application</div><div class="layer-s">${vs?'A VicSmart application is accompanied only by its class’s information requirements — they replace the zone and overlay requirements (Clause 71.06-2). ':'Built from every clause this proposal triggers. '}<b>Mandatory</b> items are prescribed by the Act, the regulations or the planning scheme, and must be provided to lodge. <b>Recommended</b> items are named in the scheme, but council can choose to waive them.</div></div></div>
+      ${L2empty?`<div class="panel-b">${callout(hoNone?'warn':'ok', hoNone?'The scheme requires no documents for this heritage application':'No scheme documents required', hoNone?'The Heritage Overlay leaves application requirements to its schedule, and Darebin’s schedule says “None specified”. Everything a heritage adviser needs comes through a further information request unless you provide it now. See recommended additional information below.':'The triggered clauses carry no application requirements of their own.')}</div>`:q.L2.map(r=>reqRow(r,2)).join('')}</div>
+    <div class="layer"><div class="layer-h"><div><div class="layer-t">Recommended additional information</div><div class="layer-s">Based on your proposal the following information has been recommended. Illustrative, the council would configure the list.</div></div></div>
       ${q.L3.map(r=>reqRow(r,3)).join('')}</div>
-    <div class="panel">${nav({})}</div>
+    <div class="panel">${nav({disabled:!docsGateOk()})}</div>
   </div>`;
 }
 function toggleSkip(id){ const d=S.docs[id]; if(d&&d.state==='skip') delete S.docs[id]; else S.docs[id]={state:'skip'}; render(); }
@@ -1714,6 +2073,19 @@ let pendingPick=null;
 function pickFile(id){ pendingPick=id; const inp=$('#fileInput'); inp.multiple = id==='_bulk'; inp.value=''; inp.click(); }
 function onFiles(files){
   if(!files.length) return; const list=[...files]; const target=pendingPick;
+  if(target==='_proposal'){ sampleProposalDoc(list[0].name); return; }
+  if(target==='_title'){ sampleTitle(list[0].name); return; }
+  if(target==='_ownerconsent'){
+    S.ownerScanning=true; render();
+    setTimeout(()=>{
+      S.ownerScanning=false;
+      const typed=S.owner.name.trim(), extracted=typed.toUpperCase();
+      const match = extracted.replace(/\s+/g,' ').toLowerCase()===typed.replace(/\s+/g,' ').toLowerCase();
+      S.ownerConsent={file:list[0].name, extracted, match};
+      render(); toast(match?'Owner consent checked — names match':'Owner consent checked — names don’t match');
+    }, 1100);
+    return;
+  }
   S.scanning=true; render();
   setTimeout(()=>{
     S.scanning=false;
@@ -1760,12 +2132,12 @@ function viewCost(){
   return `<div class="stack">
     <div class="panel"><div class="panel-h"><div><div class="panel-t">Estimated cost of the development</div><div class="panel-s">${R.hasDev?'Required for any application that includes development. It sets the fee and whether the levy applies.':'Your application is for use only — no cost is needed.'}</div></div></div>
       ${R.hasDev?`<div class="panel-b"><div class="field" style="max-width:320px"><label for="costIn">Estimated cost (incl. GST)</label><input class="input" id="costIn" inputmode="decimal" placeholder="$0" value="${esc(S.cost)}"><span class="hint">Council can ask you to verify this estimate by statutory declaration (Interim Regs r 21).</span></div></div>`:''}</div>
-    <div class="panel"><div class="panel-h"><div><div class="panel-t">Application fee</div><div class="panel-s">Planning and Environment (Fees) Regulations 2016, reg 9. Fee unit ${money(FEE_UNIT)} for 2026–27. <span class="pro-only">Combined applications: the highest fee plus 50% of each other fee (reg 10).</span></div></div></div>
+    <div class="panel"><div class="panel-h"><div><div class="panel-t">Application fee</div></div></div>
       <div class="panel-b"><div class="money">${fee.parts.map((x,i)=>`<div class="money-row"><span>${esc(x.l)} <span class="muted">· ${x.u} fee units${i>0?' · 50%':''}</span></span><span>${money(x.charged)}</span></div>`).join('')}
         ${is27&&R.type===3&&R.referral?`<div class="money-row"><span>Referral authority fee, paid to Melbourne Water (new s 55A) ${reformBadge('New from 2027')}</span><span class="muted">Set by regulations</span></div>`:''}
         <div class="money-row"><span>Estimated total payable to council</span><span>${money(fee.total)}</span></div></div>
         <div class="small muted" style="margin-top:8px">Payment is out of scope for this demo. The estimate is shown so fewer applications need a top-up fee after assessment starts.</div></div></div>
-    <div class="panel"><div class="panel-h"><div><div class="panel-t">Metropolitan planning levy</div><div class="panel-s">Applies to development in metropolitan Melbourne with an estimated cost above the threshold (${money0(MPL.threshold)} for ${MPL.thresholdYear}; indexed each year — confirm the 2026–27 figure with the SRO).</div></div></div>
+    <div class="panel"><div class="panel-h"><div><div class="panel-t">Metropolitan planning levy</div><div class="panel-s">Applies to development in metropolitan Melbourne.</div></div></div>
       <div class="panel-b">${mplBody}</div>${nav({})}</div>
   </div>`;
 }
@@ -1787,9 +2159,23 @@ function viewPeople(){
     <div class="panel"><div class="panel-h"><div><div class="panel-t">Owner of the land</div><div class="panel-s">The owner must be identified (r 13(f)). Darebin also uses these details to keep the owner informed.</div></div></div>
       <div class="panel-b stack"><div class="q"><div class="ql">Are you the owner of the land?</div><div class="yn">${[['yes','Yes'],['no','No']].map(([v,l])=>`<button class="${S.isOwner===v?'on':''}" onclick="S.isOwner='${v}';render()">${l}</button>`).join('')}</div></div>
       ${S.isOwner==='no'?`<div class="grid2">${f('ow_name','Owner’s name',S.owner.name,'As shown on the title')}${f('ow_address','Owner’s address',S.owner.address,'Not care of the applicant')}</div>
-        <div class="q"><div class="ql">Owner consent (s 48(1)) — choose one</div><div class="yn"><button class="${S.ownerMode==='signed'?'on':''}" onclick="S.ownerMode='signed';render()">The owner has signed — upload</button><button class="${S.ownerMode==='declared'?'on':''}" onclick="S.ownerMode='declared';render()">I declare the owner has been notified</button></div>
+        <div class="q"><div class="ql">Owner consent (s 48(1)) — choose one</div><div class="yn"><button class="${S.ownerMode==='signed'?'on':''}" onclick="setOwnerMode('signed')">The owner has signed — upload</button><button class="${S.ownerMode==='declared'?'on':''}" onclick="setOwnerMode('declared')">I declare the owner has been notified</button></div>
+        ${S.ownerMode==='signed'?`<div style="margin-top:10px">${ownerConsentBlock()}</div>`:''}
         <div class="small muted">Without one of these, the application isn’t validly made, and no statutory notice can fix it later.</div></div>`:''}
       </div>${nav({})}</div></div>`;
+}
+function setOwnerMode(v){ S.ownerMode=v; if(v!=='signed') S.ownerConsent=null; render(); }
+function ownerConsentBlock(){
+  if(S.ownerScanning) return `<div class="scan"><span class="dots"><i></i><i></i><i></i></span> Reading the signed consent and checking the owner’s name…</div>`;
+  if(S.ownerConsent){ const c=S.ownerConsent;
+    return `<div class="req-ai"><b>${c.match?'Checked — name matches':'Checked — name may not match'}</b> <span class="muted">· ${esc(c.file)}</span>
+      <ul><li class="${c.match?'y':'n'}" data-m="${c.match?'✓':'✕'}">Name on the document: “${esc(c.extracted)}” ${c.match?'matches':'does not match'} the owner name you entered (“${esc(S.owner.name)}”)</li></ul></div>
+      <button class="btn sm" style="margin-top:8px" onclick="uploadOwnerConsent()">Replace</button>`; }
+  return `<button class="btn sm" onclick="uploadOwnerConsent()">Upload signed consent</button>`;
+}
+function uploadOwnerConsent(){
+  if(!S.owner.name.trim()){ toast('Enter the owner’s name first'); return; }
+  pickFile('_ownerconsent');
 }
 function signIn(){ S.signedIn=true; Object.assign(S.applicant,{name:'Jordan Lee — Northside Planning Pty Ltd',phone:'03 9000 0000',address:'Level 2, 10 Example Street, Northcote VIC 3070',email:'jordan@northside.example'}); render(); toast('Profile details added'); }
 
@@ -1802,7 +2188,7 @@ function viewReview(){
   return `<div class="stack">
     <div class="panel"><div class="panel-h"><div><div class="panel-t">What the permit is for</div><div class="panel-s">Written from your answers (r 13(c)). This wording is used in any public notice, so keep it plain and complete.</div></div></div>
       <div class="panel-b"><textarea class="input" id="propText" rows="3">${esc(proposalText())}</textarea>
-      <div class="row small" style="margin-top:8px"><span class="muted">Current use:</span> ${esc((EXISTING.find(e=>e[0]===S.existing)||[])[1]||'—')} ${R.hasDev?`<span class="muted">· Estimated cost:</span> ${money0(costNum())}`:''}</div></div></div>
+      <div class="row small" style="margin-top:8px"><span class="muted">Current use:</span> ${esc(existingLabel(S.existing)||'—')} ${R.hasDev?`<span class="muted">· Estimated cost:</span> ${money0(costNum())}`:''}</div></div></div>
     ${is27?`<div class="panel"><div class="panel-b">${callout('reform',`Application type: Type ${R.type}`,`${esc(R.typeWhy)} If council disagrees, it can change the type with written reasons (new s 49B). The changed application must then be assessed as the new type and the change noted on the register (s 54G).`)}
       <label class="row small" style="margin-top:10px;cursor:pointer"><input type="checkbox" id="typeOk" ${S.typeConfirmed?'checked':''} onchange="S.typeConfirmed=this.checked;render()"> I confirm the application type (new s 47(1)(ba))</label></div></div>`:''}
     <div class="panel"><div class="panel-h"><div><div class="panel-t">Ready to lodge?</div><div class="panel-s">Three kinds of gap, handled three ways.</div></div></div>
@@ -1813,8 +2199,19 @@ function viewReview(){
         <div><div class="sub-h">Likely to be asked for later · ${g.advise.length}</div>${g.advise.length?list(g.advise,'var(--ink-faint)')+`<div class="small muted" style="margin-top:6px">Each of these is a likely further information request. ${is27?'From 2027 council must also tell you whether your response is adequate (new s 54AA).':'You would get at least 30 days to respond, and the clock stops while you do.'}</div>`:'<div class="small muted">Nothing outstanding.</div>'}</div>
       </div>
       <div class="panel-b" style="border-top:1px solid var(--border-light)"><label class="row small" style="cursor:pointer;align-items:flex-start"><input type="checkbox" id="decl" ${S.declaration?'checked':''} onchange="S.declaration=this.checked;render()" style="margin-top:3px"> <span>I declare that all the information in this application is true and correct${S.isOwner==='no'?' and the owner has been advised of the application':''}. It is against the law to give false or misleading information.${is27?' From 2027, applications are publicly available until review rights end (new s 49A).':''}</span></label></div>
-      ${nav({label:'Submit application',disabled:!canSubmit,onNext:'submitApp()'})}</div>
+      ${nav({label:'Submit application',disabled:!canSubmit,onNext:'confirmSubmit()'})}</div>
   </div>`;
+}
+function confirmSubmit(){
+  const {recMissing}=docCounts();
+  if(recMissing>0){
+    $('#overlay').innerHTML=`<div class="modal-wrap" onclick="if(event.target===this)closeOverlay()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="incT">
+      <h2 id="incT" style="font-size:17px">Application incomplete</h2>
+      <p class="small" style="color:var(--ink-med);margin:6px 0 4px">${recMissing} recommended item${recMissing===1?' is':'s are'} still missing. This can cause delays and further information requests.</p>
+      <p class="small" style="color:var(--ink-med);margin:0 0 4px">Do you wish to continue?</p>
+      <div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" onclick="closeOverlay()">Go back</button><button class="btn primary" onclick="closeOverlay();submitApp()">Continue and submit</button></div>
+    </div></div>`;
+  } else submitApp();
 }
 function submitApp(){ const g=gate(R); S.submitted=true; S.ref='BA-2026-'+String(41700+Math.floor(Math.random()*90)).padStart(5,'0'); S.submittedGate=g; S.submittedStatus={...R}; render(); window.scrollTo({top:0,behavior:'smooth'}); }
 function viewSubmitted(){
@@ -1826,10 +2223,12 @@ function viewSubmitted(){
   return `<div class="panel"><div class="panel-b stack">
     <div class="verdict ${inc?'v-std':'v-none'}"><div class="vi">✓</div><div><div class="vt">Application lodged · ${esc(S.ref)}</div><div class="vs">${inc?'Lodged as <b>incomplete</b>, knowingly. Council sees the missing items flagged, so it can triage the application differently.':'Lodged complete. Everything the law and the scheme require is attached.'}</div></div></div>
     <div class="facts"><div class="fact"><b>Pathway</b><span>${lbl}</span></div><div class="fact"><b>Council</b><span>Darebin City</span></div><div class="fact"><b>Flagged for council</b><span>${g.declare.length} incomplete · ${g.advise.length} advisory</span></div></div>
-    ${inc?`<div><div class="sub-h">What the council intake officer sees</div>${g.declare.map(x=>`<div class="gate-row"><span class="gd" style="background:var(--warning)"></span><span>${esc(x.t)} <span class="muted mono">${esc(x.cite||'')}</span></span></div>`).join('')}</div>`:''}
     <div><div class="sub-h">What happens next</div>${steps.map(([a,b])=>`<div class="gate-row"><span class="gd" style="background:var(--ink)"></span><span><b>${a}</b> — ${b}</span></div>`).join('')}</div>
     <div class="small muted">You’ll get an update each time the status changes, including when council receives, reviews and decides your application.</div>
-    <div class="row"><button class="btn primary" onclick="resetAll()">Start another application</button></div>
+    <div class="row" style="align-items:center">
+      <button class="btn primary" onclick="resetAll()">Return to dashboard</button>
+      <span class="small muted">You’ll be taken to your applications dashboard.</span>
+    </div>
   </div></div>`;
 }
 
@@ -1859,7 +2258,7 @@ function openKey(sec){
   drawer(`<h2>Key</h2>
    <h3>Three layers of requirement</h3><ul><li><b>Layer 1 — the law.</b> P&amp;E Act and regulations. Identical across Victoria and can’t be waived.</li><li><b>Layer 2 — the scheme.</b> Worked out property by property from the triggered clauses. Council can waive most of it.</li><li><b>Layer 3 — what council asks.</b> Not required at lodgement, but the usual source of further information requests. Illustrative until Darebin configures it.</li></ul>
    <h3>Three tiers at the gate</h3><ul><li><b>Must fix</b> — a prohibited use, a void levy certificate, a missing r 13 particular, or no owner consent. None can be fixed after lodgement, so the system blocks them.</li><li><b>Can lodge incomplete</b> — items council can chase with a one-shot incomplete notice (s 48A). The applicant declares it knowingly, and council sees it flagged.</li><li><b>Likely RFI</b> — Layer 3 items, shown as a delay risk.</li></ul>
-   <h3>Data sources</h3><ul><li>Zones, overlays and lot areas: Vicmap Planning and Vicmap Property, queried 23 Sep 2026.</li><li>Scheme rules: ${SCHEME.name}, ${SCHEME.source} to ${SCHEME.version} (${SCHEME.gazetted}). HCTZ2 and SLO1 post-date it.</li><li>Fees: P&amp;E (Fees) Regulations 2016, fee unit ${money(FEE_UNIT)} (2026–27).</li><li>Levy: PPN82 (March 2026) — 180-day certificates; ${money0(MPL.threshold)} threshold (${MPL.thresholdYear}).</li><li><b>Simulated:</b> title, covenant, owner, levy certificates, document checks, Darebin’s Layer 3 list.</li></ul>
+   <h3>Data sources</h3><ul><li>Zones, overlays and lot areas: Vicmap Planning and Vicmap Property, queried 23 Sep 2026.</li><li>Scheme rules: ${SCHEME.name}, ${SCHEME.source} to ${SCHEME.version} (${SCHEME.gazetted}). HCTZ2 post-dates it; SLO1 (Schedule 1 to Clause 42.03) is loaded and modelled.</li><li>Fees: P&amp;E (Fees) Regulations 2016, fee unit ${money(FEE_UNIT)} (2026–27).</li><li>Levy: PPN82 (March 2026) — 180-day certificates; ${money0(MPL.threshold)} threshold (${MPL.thresholdYear}).</li><li><b>Simulated:</b> title, covenant, owner, levy certificates, document checks, Darebin’s Layer 3 list.</li></ul>
    <h3 id="assumptions">2027 assumptions</h3>${ASSUMPTIONS.map(a=>`<div class="diff-item"><span class="badge ${a.law?'b-ok':'b-reform'}">${a.id}</span><div><b>${esc(a.t)}</b><div class="small muted">${esc(a.why)}${a.law?' <b>(law, not an assumption)</b>':''}</div></div></div>`).join('')}
    <h3 id="scenarios">Demo scenarios by 2027 application type</h3><p class="small muted">Each scenario is run through the engine under both rule sets as you open this panel. “Load · 2027” opens it with the 2027 rules switched on.</p>${scenarioGuide(false)}`);
   if(sec) setTimeout(()=>{ const e=document.getElementById(sec); e&&e.scrollIntoView({behavior:'smooth'}); },50);
@@ -1907,7 +2306,7 @@ const SCENARIOS = [
   {p:'p2',t:'Rear extension, standards not confirmed, 12 Ada St',d:'Same extension as the Type 1 case, but the applicant answers “Not sure” to the Clause 54 standards. The engine assumes they aren’t met, so it is neither VicSmart nor exempt.',a:{ext:true},f:{ext_std:'unsure'},cost:'240000'},
   {p:'p4',t:'Demolish the house, 1 Davies St',d:'Heritage demolition — not VicSmart and not exempt from notice.',a:{demo:true},f:{demo_what:'house'},cost:'45000'},
   {p:'p5',t:'Shop to café with a new shopfront, 660 Plenty Rd',d:'Use needs no permit; the shopfront and DDO17 do. The spatial check finds a residential zone 1.4 m away, so the C1Z notice exemption is lost.',a:{use:true,comm:true,park:true},f:{use_type:'food',comm_facade:'no',park_n:'le10',park_existing:'yes'},cost:'165000',pro:true},
-  {p:'p6',t:'Ground-floor extension, 58 Goodwin St',d:'Flood overlay with a Melbourne Water referral — a referral always means Type 3. SLO1 is also missing from the loaded scheme.',a:{ext:true},f:{ext_ground:'yes',h6:'no'},cost:'210000'},
+  {p:'p6',t:'Ground-floor extension, 58 Goodwin St',d:'Flood overlay with a Melbourne Water referral — a referral always means Type 3. The land is also close enough to Merri Creek that the Significant Landscape Overlay (SLO1) needs a permit, regardless of colours or floor area.',a:{ext:true},f:{ext_ground:'yes',h6:'no',slo_impact:'yes',slo_gfa50:'yes'},cost:'210000'},
   // No permit / prohibited
   {p:'p1',t:'Rear extension, 105 Albert St',d:'First-timer. GRZ2, 644 m² lot — no planning permit needed under either regime.',a:{ext:true},f:{},cost:'180000'},
   {p:'p2',t:'Take-away shop, 12 Ada St',d:'Spatial check: no Transport Zone road adjoins the land, so the zone condition fails and the use is prohibited.',a:{use:true},f:{use_type:'takeaway'},cost:''},
@@ -1915,10 +2314,12 @@ const SCENARIOS = [
 ];
 function scenarioState(s, regime){
   const st=freshState(); const p=PROPERTIES.find(x=>x.id===s.p);
+  const bwOn = Object.keys(s.a).some(k=>k!=='use'&&k!=='park'&&s.a[k]);
   Object.assign(st,{regime:regime||S.regime, persona:s.pro?'pro':S.persona, propIds:[s.p,...(s.extra||[])], primaryId:s.p, existing:p.existing,
     aspects:{...s.a}, f:{...s.f}, cost:s.cost||'', useChoice: s.a.use ? s.f.use_type : 'unchanged',
-    bw: Object.keys(s.a).some(k=>k!=='use'&&k!=='park'&&s.a[k]), step:2, signedIn:S.signedIn});
-  if(s.cov) st.covenantBreach=s.cov;
+    bw: bwOn, useChangeAns: s.a.use?'yes':'no', bwAns: bwOn?'yes':'no', proposalMode:'manual', step:2, signedIn:S.signedIn});
+  st.covAnswer = p.covenant ? 'yes' : 'no';
+  if(p.covenant){ st.titleScanned=true; st.titleDocName='Title-and-covenant.pdf'; st.covenantBreach = s.cov || 'no'; }
   return st;
 }
 // Run a scenario through the engine under both regimes without touching the live application
@@ -1949,7 +2350,7 @@ function loadScenario(i, regime){
 }
 // ── Global controls ──────────────────────────────────────────────
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'),2400); }
-function resetAll(){ const keep={regime:S.regime,persona:S.persona}; S=freshState(); Object.assign(S,keep); closeOverlay(); render(); }
+function resetAll(){ const keep={regime:S.regime}; S=freshState(); Object.assign(S,keep); closeOverlay(); render(); }
 function afterRender(){
   const as=$('#addSearch'); if(as){ as.oninput=e=>{ S.addQuery=e.target.value; $('#addSugg').innerHTML=addSuggHtml(); }; if(S.addingLand && !S.addQuery) setTimeout(()=>$('#addSearch')?.focus(),0); }
   const s=$('#addrSearch'); if(s){ s.oninput=e=>{ S.query=e.target.value; const pos=e.target.selectionStart; render(); const n=$('#addrSearch'); n.focus(); n.setSelectionRange(pos,pos); }; }
@@ -1961,11 +2362,14 @@ function afterRender(){
   const dO=$('#devOther'); if(dO) dO.onchange=e=>{ S.devOther=e.target.value; render(); };
   const pt=$('#propText'); if(pt) pt.onchange=e=>{ S.proposalEdited=true; S.proposalText=e.target.value; render(); };
   const dz=$('#dz'); if(dz){ dz.ondragover=e=>{e.preventDefault();dz.classList.add('drag');}; dz.ondragleave=()=>dz.classList.remove('drag'); dz.ondrop=e=>{ e.preventDefault(); dz.classList.remove('drag'); pendingPick='_bulk'; onFiles(e.dataTransfer.files); }; }
+  const pdz=$('#pdz'); if(pdz){ pdz.ondragover=e=>{e.preventDefault();pdz.classList.add('drag');}; pdz.ondragleave=()=>pdz.classList.remove('drag'); pdz.ondrop=e=>{ e.preventDefault(); pdz.classList.remove('drag'); const f=e.dataTransfer.files; if(f.length) sampleProposalDoc(f[0].name); }; }
+  const tdz=$('#tdz'); if(tdz){ tdz.ondragover=e=>{e.preventDefault();tdz.classList.add('drag');}; tdz.ondragleave=()=>tdz.classList.remove('drag'); tdz.ondrop=e=>{ e.preventDefault(); tdz.classList.remove('drag'); const f=e.dataTransfer.files; if(f.length) sampleTitle(f[0].name); }; }
 }
-document.getElementById('regimeSeg').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; if(S.regime!==b.dataset.r){ S.regime=b.dataset.r; S.typeConfirmed=false; render(); toast(S.regime==='r2027'?'Re-run under the 2027 rules (with labelled assumptions)':'Re-run under today’s rules'); } };
-document.getElementById('personaSeg').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; S.persona=b.dataset.p; S.openTrig={}; render(); };
+document.getElementById('regimeSeg').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; if(S.regime!==b.dataset.r){ S.regime=b.dataset.r; S.typeConfirmed=false; S.pathwayChoice=null; render(); toast(S.regime==='r2027'?'Re-run under the 2027 rules (with labelled assumptions)':'Re-run under today’s rules'); } };
 document.getElementById('gateForm').onsubmit=e=>{ e.preventDefault(); if($('#gatePw').value.trim()==='objective2026'){ $('#gate').hidden=true; try{sessionStorage.setItem('ba_ok','1');}catch(_){} } else $('#gateErr').textContent='That password isn’t right. Ask Sean for access.'; };
 try{ if(sessionStorage.getItem('ba_ok')==='1') $('#gate').hidden=true; }catch(_){}
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeOverlay(); });
 render();
-</script></body></html>
+</script>
+
+</body></html>
